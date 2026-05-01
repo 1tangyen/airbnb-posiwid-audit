@@ -1,0 +1,1453 @@
+{
+  "nyc": {
+    "name": "New York City",
+    "signal_a_price_variance": {
+      "overall": {
+        "mean": 243.19,
+        "median": 165.93,
+        "std": 363.56,
+        "cv": 1.495,
+        "n": 20350
+      },
+      "by_neighbourhood": [
+        {
+          "neighbourhood": "Bedford-Stuyvesant",
+          "n": 1475,
+          "median_price": 135.23,
+          "mean_price": 163.5,
+          "cv": 0.8014
+        },
+        {
+          "neighbourhood": "Midtown",
+          "n": 1306,
+          "median_price": 330.3,
+          "mean_price": 444.4,
+          "cv": 0.9768
+        },
+        {
+          "neighbourhood": "Harlem",
+          "n": 1006,
+          "median_price": 122.18,
+          "mean_price": 201.65,
+          "cv": 1.4682
+        },
+        {
+          "neighbourhood": "Hell's Kitchen",
+          "n": 956,
+          "median_price": 214.49,
+          "mean_price": 276.92,
+          "cv": 1.1507
+        },
+        {
+          "neighbourhood": "Upper East Side",
+          "n": 810,
+          "median_price": 200.17,
+          "mean_price": 293.94,
+          "cv": 1.526
+        },
+        {
+          "neighbourhood": "Williamsburg",
+          "n": 794,
+          "median_price": 176.99,
+          "mean_price": 236.95,
+          "cv": 1.0181
+        },
+        {
+          "neighbourhood": "Upper West Side",
+          "n": 752,
+          "median_price": 192.0,
+          "mean_price": 276.0,
+          "cv": 1.3711
+        },
+        {
+          "neighbourhood": "Bushwick",
+          "n": 643,
+          "median_price": 109.41,
+          "mean_price": 146.86,
+          "cv": 1.0561
+        },
+        {
+          "neighbourhood": "Crown Heights",
+          "n": 606,
+          "median_price": 139.66,
+          "mean_price": 228.65,
+          "cv": 2.0842
+        },
+        {
+          "neighbourhood": "Chelsea",
+          "n": 467,
+          "median_price": 217.57,
+          "mean_price": 314.32,
+          "cv": 1.125
+        },
+        {
+          "neighbourhood": "East Flatbush",
+          "n": 414,
+          "median_price": 116.35,
+          "mean_price": 161.94,
+          "cv": 1.0327
+        },
+        {
+          "neighbourhood": "East Harlem",
+          "n": 366,
+          "median_price": 140.14,
+          "mean_price": 186.72,
+          "cv": 1.1293
+        },
+        {
+          "neighbourhood": "East Village",
+          "n": 324,
+          "median_price": 200.32,
+          "mean_price": 282.26,
+          "cv": 1.0615
+        },
+        {
+          "neighbourhood": "Lower East Side",
+          "n": 305,
+          "median_price": 228.63,
+          "mean_price": 295.62,
+          "cv": 1.3709
+        },
+        {
+          "neighbourhood": "Murray Hill",
+          "n": 304,
+          "median_price": 251.8,
+          "mean_price": 379.72,
+          "cv": 1.1345
+        }
+      ],
+      "by_room_type": [
+        {
+          "room_type": "Entire home/apt",
+          "n": 11001,
+          "median_price": 205.41,
+          "cv": 1.2473
+        },
+        {
+          "room_type": "Private room",
+          "n": 9155,
+          "median_price": 100.93,
+          "cv": 1.9165
+        },
+        {
+          "room_type": "Shared room",
+          "n": 194,
+          "median_price": 66.41,
+          "cv": 1.8331
+        }
+      ]
+    },
+    "signal_b_score_inflation": {
+      "n": 15259,
+      "mean": 4.721,
+      "median": 4.85,
+      "std": 0.466,
+      "pct_above_4": 96.4,
+      "pct_above_45": 86.4,
+      "pct_above_48": 59.4,
+      "pct_5_0": 27.1,
+      "distribution": {
+        "bins": [
+          1.0,
+          1.1,
+          1.2,
+          1.3,
+          1.4,
+          1.5,
+          1.6,
+          1.7,
+          1.8,
+          1.9,
+          2.0,
+          2.1,
+          2.2,
+          2.3,
+          2.4,
+          2.5,
+          2.6,
+          2.7,
+          2.8,
+          2.9,
+          3.0,
+          3.1,
+          3.2,
+          3.3,
+          3.4,
+          3.5,
+          3.6,
+          3.7,
+          3.8,
+          3.9,
+          4.0,
+          4.1,
+          4.2,
+          4.3,
+          4.4,
+          4.5,
+          4.6,
+          4.7,
+          4.8,
+          4.9
+        ],
+        "counts": [
+          76,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          60,
+          0,
+          0,
+          2,
+          7,
+          10,
+          2,
+          5,
+          1,
+          1,
+          161,
+          0,
+          4,
+          2,
+          14,
+          56,
+          10,
+          56,
+          29,
+          35,
+          418,
+          40,
+          124,
+          192,
+          392,
+          774,
+          708,
+          1310,
+          2013,
+          2564,
+          6190
+        ]
+      },
+      "sub_scores": {
+        "accuracy": {
+          "mean": 4.748,
+          "n": 15259
+        },
+        "cleanliness": {
+          "mean": 4.689,
+          "n": 15259
+        },
+        "checkin": {
+          "mean": 4.832,
+          "n": 15259
+        },
+        "communication": {
+          "mean": 4.805,
+          "n": 15259
+        },
+        "location": {
+          "mean": 4.731,
+          "n": 15258
+        },
+        "value": {
+          "mean": 4.608,
+          "n": 15259
+        }
+      }
+    },
+    "signal_c_hidden_transcript": {
+      "total_reviews": 816681,
+      "negative_total": 46265,
+      "negative_rate_pct": 5.67,
+      "value_complaint_total": 1889,
+      "value_rate_pct": 0.23,
+      "yearly_trend": [
+        {
+          "year": 2010,
+          "total_reviews": 337,
+          "negative_count": 15,
+          "negative_rate": 4.45,
+          "value_complaint_count": 0,
+          "value_rate": 0.0
+        },
+        {
+          "year": 2011,
+          "total_reviews": 1161,
+          "negative_count": 80,
+          "negative_rate": 6.89,
+          "value_complaint_count": 4,
+          "value_rate": 0.34
+        },
+        {
+          "year": 2012,
+          "total_reviews": 2329,
+          "negative_count": 131,
+          "negative_rate": 5.62,
+          "value_complaint_count": 4,
+          "value_rate": 0.17
+        },
+        {
+          "year": 2013,
+          "total_reviews": 4291,
+          "negative_count": 251,
+          "negative_rate": 5.85,
+          "value_complaint_count": 7,
+          "value_rate": 0.16
+        },
+        {
+          "year": 2014,
+          "total_reviews": 7636,
+          "negative_count": 476,
+          "negative_rate": 6.23,
+          "value_complaint_count": 13,
+          "value_rate": 0.17
+        },
+        {
+          "year": 2015,
+          "total_reviews": 14014,
+          "negative_count": 786,
+          "negative_rate": 5.61,
+          "value_complaint_count": 17,
+          "value_rate": 0.12
+        },
+        {
+          "year": 2016,
+          "total_reviews": 24091,
+          "negative_count": 1290,
+          "negative_rate": 5.35,
+          "value_complaint_count": 33,
+          "value_rate": 0.14
+        },
+        {
+          "year": 2017,
+          "total_reviews": 34484,
+          "negative_count": 1714,
+          "negative_rate": 4.97,
+          "value_complaint_count": 32,
+          "value_rate": 0.09
+        },
+        {
+          "year": 2018,
+          "total_reviews": 50830,
+          "negative_count": 2549,
+          "negative_rate": 5.01,
+          "value_complaint_count": 67,
+          "value_rate": 0.13
+        },
+        {
+          "year": 2019,
+          "total_reviews": 68997,
+          "negative_count": 3453,
+          "negative_rate": 5.0,
+          "value_complaint_count": 118,
+          "value_rate": 0.17
+        },
+        {
+          "year": 2020,
+          "total_reviews": 28063,
+          "negative_count": 1417,
+          "negative_rate": 5.05,
+          "value_complaint_count": 58,
+          "value_rate": 0.21
+        },
+        {
+          "year": 2021,
+          "total_reviews": 62621,
+          "negative_count": 3629,
+          "negative_rate": 5.8,
+          "value_complaint_count": 158,
+          "value_rate": 0.25
+        },
+        {
+          "year": 2022,
+          "total_reviews": 112272,
+          "negative_count": 6278,
+          "negative_rate": 5.59,
+          "value_complaint_count": 238,
+          "value_rate": 0.21
+        },
+        {
+          "year": 2023,
+          "total_reviews": 132873,
+          "negative_count": 7754,
+          "negative_rate": 5.84,
+          "value_complaint_count": 308,
+          "value_rate": 0.23
+        },
+        {
+          "year": 2024,
+          "total_reviews": 107948,
+          "negative_count": 6584,
+          "negative_rate": 6.1,
+          "value_complaint_count": 365,
+          "value_rate": 0.34
+        },
+        {
+          "year": 2025,
+          "total_reviews": 130104,
+          "negative_count": 7991,
+          "negative_rate": 6.14,
+          "value_complaint_count": 381,
+          "value_rate": 0.29
+        },
+        {
+          "year": 2026,
+          "total_reviews": 30312,
+          "negative_count": 1866,
+          "negative_rate": 6.16,
+          "value_complaint_count": 86,
+          "value_rate": 0.28
+        }
+      ],
+      "hidden_transcript": {
+        "high_score_listings_count": 13178,
+        "reviews_for_high_score_listings": 527681,
+        "negative_in_high_score": 26857,
+        "negative_rate_in_high_score_pct": 5.09,
+        "value_complaints_in_high_score": 798
+      },
+      "score_buckets": [
+        {
+          "bucket": "<3.0",
+          "reviews": 29,
+          "negative_count": 11,
+          "negative_rate": 37.93
+        },
+        {
+          "bucket": "3.0-3.5",
+          "reviews": 87,
+          "negative_count": 25,
+          "negative_rate": 28.74
+        },
+        {
+          "bucket": "3.5-4.0",
+          "reviews": 549,
+          "negative_count": 120,
+          "negative_rate": 21.86
+        },
+        {
+          "bucket": "4.0-4.5",
+          "reviews": 32897,
+          "negative_count": 3430,
+          "negative_rate": 10.43
+        },
+        {
+          "bucket": "4.5-5.0",
+          "reviews": 527681,
+          "negative_count": 26857,
+          "negative_rate": 5.09
+        }
+      ],
+      "precision_validation": {
+        "sample_size": 100,
+        "estimated_fp_from_negation": 3,
+        "estimated_precision_pct": 97.0
+      }
+    },
+    "signal_d_description_homogenization": {
+      "n_descriptions": 19208,
+      "n_sampled": 2000,
+      "mean_similarity": 0.0512,
+      "median_similarity": 0.0384,
+      "p90_similarity": 0.113,
+      "p95_similarity": 0.146,
+      "std_similarity": 0.055,
+      "note": "TF-IDF (5000 features, English stop words) + cosine similarity on random 2000 sample"
+    },
+    "host_concentration": {
+      "total_hosts": 10328,
+      "total_listings": 20350,
+      "listings_per_host_mean": 1.97,
+      "single_listing_hosts_pct": 75.7,
+      "multi2_plus_pct": 24.3,
+      "multi5_plus_pct": 5.1,
+      "multi10_plus_pct": 1.8,
+      "top10_hosts_listing_share_pct": 8.4,
+      "gini_coefficient": 0.4486
+    }
+  },
+  "boston": {
+    "name": "Boston",
+    "signal_a_price_variance": {
+      "overall": {
+        "mean": 249.88,
+        "median": 202.0,
+        "std": 280.63,
+        "cv": 1.123,
+        "n": 3460
+      },
+      "by_neighbourhood": [
+        {
+          "neighbourhood": "Dorchester",
+          "n": 475,
+          "median_price": 118.0,
+          "mean_price": 185.26,
+          "cv": 1.042
+        },
+        {
+          "neighbourhood": "Back Bay",
+          "n": 297,
+          "median_price": 286.0,
+          "mean_price": 323.44,
+          "cv": 0.5551
+        },
+        {
+          "neighbourhood": "Downtown",
+          "n": 278,
+          "median_price": 332.0,
+          "mean_price": 378.91,
+          "cv": 0.4953
+        },
+        {
+          "neighbourhood": "Roxbury",
+          "n": 256,
+          "median_price": 154.5,
+          "mean_price": 191.16,
+          "cv": 0.8402
+        },
+        {
+          "neighbourhood": "Brighton",
+          "n": 234,
+          "median_price": 167.0,
+          "mean_price": 182.58,
+          "cv": 0.5656
+        },
+        {
+          "neighbourhood": "South End",
+          "n": 209,
+          "median_price": 231.0,
+          "mean_price": 284.57,
+          "cv": 0.635
+        },
+        {
+          "neighbourhood": "Beacon Hill",
+          "n": 197,
+          "median_price": 140.0,
+          "mean_price": 185.32,
+          "cv": 0.8588
+        },
+        {
+          "neighbourhood": "Fenway",
+          "n": 197,
+          "median_price": 254.0,
+          "mean_price": 295.99,
+          "cv": 0.7009
+        },
+        {
+          "neighbourhood": "Jamaica Plain",
+          "n": 180,
+          "median_price": 207.0,
+          "mean_price": 277.09,
+          "cv": 0.7992
+        },
+        {
+          "neighbourhood": "East Boston",
+          "n": 166,
+          "median_price": 157.5,
+          "mean_price": 227.51,
+          "cv": 2.5396
+        },
+        {
+          "neighbourhood": "South Boston",
+          "n": 143,
+          "median_price": 226.0,
+          "mean_price": 270.21,
+          "cv": 0.7825
+        },
+        {
+          "neighbourhood": "Allston",
+          "n": 122,
+          "median_price": 139.0,
+          "mean_price": 186.26,
+          "cv": 0.8093
+        },
+        {
+          "neighbourhood": "North End",
+          "n": 91,
+          "median_price": 261.0,
+          "mean_price": 295.48,
+          "cv": 0.6317
+        },
+        {
+          "neighbourhood": "Roslindale",
+          "n": 85,
+          "median_price": 135.0,
+          "mean_price": 160.36,
+          "cv": 0.6478
+        },
+        {
+          "neighbourhood": "West Roxbury",
+          "n": 72,
+          "median_price": 112.0,
+          "mean_price": 182.12,
+          "cv": 0.9034
+        }
+      ],
+      "by_room_type": [
+        {
+          "room_type": "Entire home/apt",
+          "n": 2487,
+          "median_price": 250.0,
+          "cv": 1.0164
+        },
+        {
+          "room_type": "Private room",
+          "n": 970,
+          "median_price": 81.5,
+          "cv": 1.0591
+        },
+        {
+          "room_type": "Shared room",
+          "n": 3,
+          "median_price": 94.0,
+          "cv": 0.2215
+        }
+      ]
+    },
+    "signal_b_score_inflation": {
+      "n": 2760,
+      "mean": 4.738,
+      "median": 4.83,
+      "std": 0.404,
+      "pct_above_4": 97.3,
+      "pct_above_45": 88.3,
+      "pct_above_48": 58.0,
+      "pct_5_0": 21.6,
+      "distribution": {
+        "bins": [
+          1.0,
+          1.1,
+          1.2,
+          1.3,
+          1.4,
+          1.5,
+          1.6,
+          1.7,
+          1.8,
+          1.9,
+          2.0,
+          2.1,
+          2.2,
+          2.3,
+          2.4,
+          2.5,
+          2.6,
+          2.7,
+          2.8,
+          2.9,
+          3.0,
+          3.1,
+          3.2,
+          3.3,
+          3.4,
+          3.5,
+          3.6,
+          3.7,
+          3.8,
+          3.9,
+          4.0,
+          4.1,
+          4.2,
+          4.3,
+          4.4,
+          4.5,
+          4.6,
+          4.7,
+          4.8,
+          4.9
+        ],
+        "counts": [
+          11,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          19,
+          0,
+          0,
+          2,
+          0,
+          7,
+          4,
+          4,
+          9,
+          5,
+          64,
+          9,
+          24,
+          45,
+          59,
+          110,
+          148,
+          257,
+          440,
+          543,
+          992
+        ]
+      },
+      "sub_scores": {
+        "accuracy": {
+          "mean": 4.776,
+          "n": 2760
+        },
+        "cleanliness": {
+          "mean": 4.754,
+          "n": 2760
+        },
+        "checkin": {
+          "mean": 4.845,
+          "n": 2760
+        },
+        "communication": {
+          "mean": 4.84,
+          "n": 2760
+        },
+        "location": {
+          "mean": 4.752,
+          "n": 2760
+        },
+        "value": {
+          "mean": 4.601,
+          "n": 2760
+        }
+      }
+    },
+    "signal_c_hidden_transcript": {
+      "total_reviews": 207136,
+      "negative_total": 12890,
+      "negative_rate_pct": 6.22,
+      "value_complaint_total": 608,
+      "value_rate_pct": 0.29,
+      "yearly_trend": [
+        {
+          "year": 2011,
+          "total_reviews": 175,
+          "negative_count": 4,
+          "negative_rate": 2.29,
+          "value_complaint_count": 0,
+          "value_rate": 0.0
+        },
+        {
+          "year": 2012,
+          "total_reviews": 403,
+          "negative_count": 10,
+          "negative_rate": 2.48,
+          "value_complaint_count": 1,
+          "value_rate": 0.25
+        },
+        {
+          "year": 2013,
+          "total_reviews": 585,
+          "negative_count": 29,
+          "negative_rate": 4.96,
+          "value_complaint_count": 0,
+          "value_rate": 0.0
+        },
+        {
+          "year": 2014,
+          "total_reviews": 1065,
+          "negative_count": 47,
+          "negative_rate": 4.41,
+          "value_complaint_count": 2,
+          "value_rate": 0.19
+        },
+        {
+          "year": 2015,
+          "total_reviews": 2389,
+          "negative_count": 88,
+          "negative_rate": 3.68,
+          "value_complaint_count": 7,
+          "value_rate": 0.29
+        },
+        {
+          "year": 2016,
+          "total_reviews": 4459,
+          "negative_count": 164,
+          "negative_rate": 3.68,
+          "value_complaint_count": 6,
+          "value_rate": 0.13
+        },
+        {
+          "year": 2017,
+          "total_reviews": 8719,
+          "negative_count": 429,
+          "negative_rate": 4.92,
+          "value_complaint_count": 7,
+          "value_rate": 0.08
+        },
+        {
+          "year": 2018,
+          "total_reviews": 14080,
+          "negative_count": 721,
+          "negative_rate": 5.12,
+          "value_complaint_count": 24,
+          "value_rate": 0.17
+        },
+        {
+          "year": 2019,
+          "total_reviews": 16665,
+          "negative_count": 790,
+          "negative_rate": 4.74,
+          "value_complaint_count": 27,
+          "value_rate": 0.16
+        },
+        {
+          "year": 2020,
+          "total_reviews": 6391,
+          "negative_count": 337,
+          "negative_rate": 5.27,
+          "value_complaint_count": 17,
+          "value_rate": 0.27
+        },
+        {
+          "year": 2021,
+          "total_reviews": 14847,
+          "negative_count": 870,
+          "negative_rate": 5.86,
+          "value_complaint_count": 46,
+          "value_rate": 0.31
+        },
+        {
+          "year": 2022,
+          "total_reviews": 27020,
+          "negative_count": 1682,
+          "negative_rate": 6.23,
+          "value_complaint_count": 92,
+          "value_rate": 0.34
+        },
+        {
+          "year": 2023,
+          "total_reviews": 33621,
+          "negative_count": 2341,
+          "negative_rate": 6.96,
+          "value_complaint_count": 138,
+          "value_rate": 0.41
+        },
+        {
+          "year": 2024,
+          "total_reviews": 42965,
+          "negative_count": 3040,
+          "negative_rate": 7.08,
+          "value_complaint_count": 152,
+          "value_rate": 0.35
+        },
+        {
+          "year": 2025,
+          "total_reviews": 33014,
+          "negative_count": 2335,
+          "negative_rate": 7.07,
+          "value_complaint_count": 88,
+          "value_rate": 0.27
+        }
+      ],
+      "hidden_transcript": {
+        "high_score_listings_count": 2436,
+        "reviews_for_high_score_listings": 143901,
+        "negative_in_high_score": 8150,
+        "negative_rate_in_high_score_pct": 5.66,
+        "value_complaints_in_high_score": 335
+      },
+      "score_buckets": [
+        {
+          "bucket": "<3.0",
+          "reviews": 6,
+          "negative_count": 5,
+          "negative_rate": 83.33
+        },
+        {
+          "bucket": "3.0-3.5",
+          "reviews": 6,
+          "negative_count": 0,
+          "negative_rate": 0.0
+        },
+        {
+          "bucket": "3.5-4.0",
+          "reviews": 22,
+          "negative_count": 5,
+          "negative_rate": 22.73
+        },
+        {
+          "bucket": "4.0-4.5",
+          "reviews": 6767,
+          "negative_count": 834,
+          "negative_rate": 12.32
+        },
+        {
+          "bucket": "4.5-5.0",
+          "reviews": 143901,
+          "negative_count": 8150,
+          "negative_rate": 5.66
+        }
+      ],
+      "precision_validation": {
+        "sample_size": 100,
+        "estimated_fp_from_negation": 6,
+        "estimated_precision_pct": 94.0
+      }
+    },
+    "signal_d_description_homogenization": {
+      "n_descriptions": 3407,
+      "n_sampled": 2000,
+      "mean_similarity": 0.0581,
+      "median_similarity": 0.0412,
+      "p90_similarity": 0.1187,
+      "p95_similarity": 0.1605,
+      "std_similarity": 0.0746,
+      "note": "TF-IDF (5000 features, English stop words) + cosine similarity on random 2000 sample"
+    },
+    "host_concentration": {
+      "total_hosts": 1106,
+      "total_listings": 3460,
+      "listings_per_host_mean": 3.13,
+      "single_listing_hosts_pct": 65.2,
+      "multi2_plus_pct": 34.8,
+      "multi5_plus_pct": 11.1,
+      "multi10_plus_pct": 4.6,
+      "top10_hosts_listing_share_pct": 24.7,
+      "gini_coefficient": 0.6022
+    }
+  },
+  "chicago": {
+    "name": "Chicago",
+    "signal_a_price_variance": {
+      "overall": {
+        "mean": 214.07,
+        "median": 152.0,
+        "std": 345.66,
+        "cv": 1.6147,
+        "n": 7726
+      },
+      "by_neighbourhood": [
+        {
+          "neighbourhood": "Near North Side",
+          "n": 878,
+          "median_price": 232.0,
+          "mean_price": 344.54,
+          "cv": 1.6929
+        },
+        {
+          "neighbourhood": "West Town",
+          "n": 692,
+          "median_price": 165.0,
+          "mean_price": 290.89,
+          "cv": 2.2822
+        },
+        {
+          "neighbourhood": "Near West Side",
+          "n": 559,
+          "median_price": 206.0,
+          "mean_price": 252.86,
+          "cv": 1.524
+        },
+        {
+          "neighbourhood": "Lake View",
+          "n": 518,
+          "median_price": 171.5,
+          "mean_price": 246.53,
+          "cv": 0.9059
+        },
+        {
+          "neighbourhood": "Loop",
+          "n": 472,
+          "median_price": 221.5,
+          "mean_price": 326.75,
+          "cv": 1.0422
+        },
+        {
+          "neighbourhood": "Logan Square",
+          "n": 426,
+          "median_price": 133.0,
+          "mean_price": 182.81,
+          "cv": 1.0244
+        },
+        {
+          "neighbourhood": "Lincoln Park",
+          "n": 269,
+          "median_price": 209.0,
+          "mean_price": 281.69,
+          "cv": 1.2131
+        },
+        {
+          "neighbourhood": "Near South Side",
+          "n": 251,
+          "median_price": 213.0,
+          "mean_price": 253.83,
+          "cv": 0.4948
+        },
+        {
+          "neighbourhood": "Lower West Side",
+          "n": 206,
+          "median_price": 115.0,
+          "mean_price": 134.19,
+          "cv": 0.8238
+        },
+        {
+          "neighbourhood": "Woodlawn",
+          "n": 198,
+          "median_price": 85.0,
+          "mean_price": 105.78,
+          "cv": 0.6913
+        },
+        {
+          "neighbourhood": "Avondale",
+          "n": 184,
+          "median_price": 120.0,
+          "mean_price": 151.95,
+          "cv": 0.9295
+        },
+        {
+          "neighbourhood": "Bridgeport",
+          "n": 175,
+          "median_price": 93.0,
+          "mean_price": 107.11,
+          "cv": 0.779
+        },
+        {
+          "neighbourhood": "Uptown",
+          "n": 164,
+          "median_price": 114.5,
+          "mean_price": 158.29,
+          "cv": 0.8092
+        },
+        {
+          "neighbourhood": "Irving Park",
+          "n": 163,
+          "median_price": 126.0,
+          "mean_price": 144.21,
+          "cv": 0.719
+        },
+        {
+          "neighbourhood": "Edgewater",
+          "n": 159,
+          "median_price": 138.0,
+          "mean_price": 166.08,
+          "cv": 0.7295
+        }
+      ],
+      "by_room_type": [
+        {
+          "room_type": "Entire home/apt",
+          "n": 6200,
+          "median_price": 177.0,
+          "cv": 1.5053
+        },
+        {
+          "room_type": "Private room",
+          "n": 1493,
+          "median_price": 60.0,
+          "cv": 1.8729
+        },
+        {
+          "room_type": "Shared room",
+          "n": 33,
+          "median_price": 38.0,
+          "cv": 0.7951
+        }
+      ]
+    },
+    "signal_b_score_inflation": {
+      "n": 6287,
+      "mean": 4.769,
+      "median": 4.87,
+      "std": 0.405,
+      "pct_above_4": 97.5,
+      "pct_above_45": 90.9,
+      "pct_above_48": 65.4,
+      "pct_5_0": 21.3,
+      "distribution": {
+        "bins": [
+          1.0,
+          1.1,
+          1.2,
+          1.3,
+          1.4,
+          1.5,
+          1.6,
+          1.7,
+          1.8,
+          1.9,
+          2.0,
+          2.1,
+          2.2,
+          2.3,
+          2.4,
+          2.5,
+          2.6,
+          2.7,
+          2.8,
+          2.9,
+          3.0,
+          3.1,
+          3.2,
+          3.3,
+          3.4,
+          3.5,
+          3.6,
+          3.7,
+          3.8,
+          3.9,
+          4.0,
+          4.1,
+          4.2,
+          4.3,
+          4.4,
+          4.5,
+          4.6,
+          4.7,
+          4.8,
+          4.9
+        ],
+        "counts": [
+          28,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          2,
+          7,
+          0,
+          1,
+          1,
+          0,
+          48,
+          0,
+          1,
+          0,
+          8,
+          15,
+          5,
+          10,
+          15,
+          6,
+          99,
+          10,
+          39,
+          51,
+          95,
+          229,
+          244,
+          486,
+          903,
+          1319,
+          2656
+        ]
+      },
+      "sub_scores": {
+        "accuracy": {
+          "mean": 4.803,
+          "n": 6287
+        },
+        "cleanliness": {
+          "mean": 4.768,
+          "n": 6287
+        },
+        "checkin": {
+          "mean": 4.842,
+          "n": 6287
+        },
+        "communication": {
+          "mean": 4.857,
+          "n": 6287
+        },
+        "location": {
+          "mean": 4.758,
+          "n": 6287
+        },
+        "value": {
+          "mean": 4.677,
+          "n": 6287
+        }
+      }
+    },
+    "signal_c_hidden_transcript": {
+      "total_reviews": 458960,
+      "negative_total": 27450,
+      "negative_rate_pct": 5.98,
+      "value_complaint_total": 1001,
+      "value_rate_pct": 0.22,
+      "yearly_trend": [
+        {
+          "year": 2012,
+          "total_reviews": 349,
+          "negative_count": 13,
+          "negative_rate": 3.72,
+          "value_complaint_count": 1,
+          "value_rate": 0.29
+        },
+        {
+          "year": 2013,
+          "total_reviews": 835,
+          "negative_count": 36,
+          "negative_rate": 4.31,
+          "value_complaint_count": 2,
+          "value_rate": 0.24
+        },
+        {
+          "year": 2014,
+          "total_reviews": 1805,
+          "negative_count": 108,
+          "negative_rate": 5.98,
+          "value_complaint_count": 4,
+          "value_rate": 0.22
+        },
+        {
+          "year": 2015,
+          "total_reviews": 4253,
+          "negative_count": 172,
+          "negative_rate": 4.04,
+          "value_complaint_count": 5,
+          "value_rate": 0.12
+        },
+        {
+          "year": 2016,
+          "total_reviews": 8838,
+          "negative_count": 390,
+          "negative_rate": 4.41,
+          "value_complaint_count": 11,
+          "value_rate": 0.12
+        },
+        {
+          "year": 2017,
+          "total_reviews": 14741,
+          "negative_count": 622,
+          "negative_rate": 4.22,
+          "value_complaint_count": 11,
+          "value_rate": 0.07
+        },
+        {
+          "year": 2018,
+          "total_reviews": 25037,
+          "negative_count": 1096,
+          "negative_rate": 4.38,
+          "value_complaint_count": 29,
+          "value_rate": 0.12
+        },
+        {
+          "year": 2019,
+          "total_reviews": 34155,
+          "negative_count": 1596,
+          "negative_rate": 4.67,
+          "value_complaint_count": 36,
+          "value_rate": 0.11
+        },
+        {
+          "year": 2020,
+          "total_reviews": 17338,
+          "negative_count": 842,
+          "negative_rate": 4.86,
+          "value_complaint_count": 29,
+          "value_rate": 0.17
+        },
+        {
+          "year": 2021,
+          "total_reviews": 38946,
+          "negative_count": 2210,
+          "negative_rate": 5.67,
+          "value_complaint_count": 84,
+          "value_rate": 0.22
+        },
+        {
+          "year": 2022,
+          "total_reviews": 58476,
+          "negative_count": 3300,
+          "negative_rate": 5.64,
+          "value_complaint_count": 138,
+          "value_rate": 0.24
+        },
+        {
+          "year": 2023,
+          "total_reviews": 73449,
+          "negative_count": 4834,
+          "negative_rate": 6.58,
+          "value_complaint_count": 182,
+          "value_rate": 0.25
+        },
+        {
+          "year": 2024,
+          "total_reviews": 94663,
+          "negative_count": 6254,
+          "negative_rate": 6.61,
+          "value_complaint_count": 249,
+          "value_rate": 0.26
+        },
+        {
+          "year": 2025,
+          "total_reviews": 85210,
+          "negative_count": 5971,
+          "negative_rate": 7.01,
+          "value_complaint_count": 219,
+          "value_rate": 0.26
+        }
+      ],
+      "hidden_transcript": {
+        "high_score_listings_count": 5712,
+        "reviews_for_high_score_listings": 299737,
+        "negative_in_high_score": 15741,
+        "negative_rate_in_high_score_pct": 5.25,
+        "value_complaints_in_high_score": 518
+      },
+      "score_buckets": [
+        {
+          "bucket": "<3.0",
+          "reviews": 9,
+          "negative_count": 4,
+          "negative_rate": 44.44
+        },
+        {
+          "bucket": "3.0-3.5",
+          "reviews": 17,
+          "negative_count": 7,
+          "negative_rate": 41.18
+        },
+        {
+          "bucket": "3.5-4.0",
+          "reviews": 48,
+          "negative_count": 11,
+          "negative_rate": 22.92
+        },
+        {
+          "bucket": "4.0-4.5",
+          "reviews": 7915,
+          "negative_count": 724,
+          "negative_rate": 9.15
+        },
+        {
+          "bucket": "4.5-5.0",
+          "reviews": 299737,
+          "negative_count": 15741,
+          "negative_rate": 5.25
+        }
+      ],
+      "precision_validation": {
+        "sample_size": 100,
+        "estimated_fp_from_negation": 8,
+        "estimated_precision_pct": 92.0
+      }
+    },
+    "signal_d_description_homogenization": {
+      "n_descriptions": 7484,
+      "n_sampled": 2000,
+      "mean_similarity": 0.057,
+      "median_similarity": 0.0427,
+      "p90_similarity": 0.1176,
+      "p95_similarity": 0.1525,
+      "std_similarity": 0.0646,
+      "note": "TF-IDF (5000 features, English stop words) + cosine similarity on random 2000 sample"
+    },
+    "host_concentration": {
+      "total_hosts": 3330,
+      "total_listings": 7726,
+      "listings_per_host_mean": 2.32,
+      "single_listing_hosts_pct": 73.3,
+      "multi2_plus_pct": 26.7,
+      "multi5_plus_pct": 7.9,
+      "multi10_plus_pct": 2.8,
+      "top10_hosts_listing_share_pct": 15.2,
+      "gini_coefficient": 0.5151
+    }
+  },
+  "cross_city_summary": {
+    "signal_a_price_variance": {
+      "nyc": {
+        "overall_cv": 1.495,
+        "median_price": 165.93
+      },
+      "boston": {
+        "overall_cv": 1.123,
+        "median_price": 202.0
+      },
+      "chicago": {
+        "overall_cv": 1.6147,
+        "median_price": 152.0
+      }
+    },
+    "signal_b_score_inflation": {
+      "nyc": {
+        "mean": 4.721,
+        "pct_above_45": 86.4
+      },
+      "boston": {
+        "mean": 4.738,
+        "pct_above_45": 88.3
+      },
+      "chicago": {
+        "mean": 4.769,
+        "pct_above_45": 90.9
+      }
+    },
+    "signal_c_hidden_transcript": {
+      "nyc": {
+        "negative_rate": 5.67,
+        "value_rate": 0.23,
+        "hidden_transcript_neg_rate": 5.09
+      },
+      "boston": {
+        "negative_rate": 6.22,
+        "value_rate": 0.29,
+        "hidden_transcript_neg_rate": 5.66
+      },
+      "chicago": {
+        "negative_rate": 5.98,
+        "value_rate": 0.22,
+        "hidden_transcript_neg_rate": 5.25
+      }
+    },
+    "signal_d_description_homogenization": {
+      "nyc": {
+        "mean_sim": 0.0512,
+        "p90_sim": 0.113
+      },
+      "boston": {
+        "mean_sim": 0.0581,
+        "p90_sim": 0.1187
+      },
+      "chicago": {
+        "mean_sim": 0.057,
+        "p90_sim": 0.1176
+      }
+    },
+    "host_concentration": {
+      "nyc": {
+        "single_host_pct": 75.7,
+        "top10_share": 8.4,
+        "gini": 0.4486
+      },
+      "boston": {
+        "single_host_pct": 65.2,
+        "top10_share": 24.7,
+        "gini": 0.6022
+      },
+      "chicago": {
+        "single_host_pct": 73.3,
+        "top10_share": 15.2,
+        "gini": 0.5151
+      }
+    }
+  }
+}

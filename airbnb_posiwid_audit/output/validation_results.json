@@ -1,0 +1,155 @@
+{
+  "nyc": {
+    "score_buckets": [
+      {
+        "bucket": "<3.0",
+        "reviews": 29,
+        "negative_count": 11,
+        "negative_rate": 37.93
+      },
+      {
+        "bucket": "3.0-3.5",
+        "reviews": 87,
+        "negative_count": 25,
+        "negative_rate": 28.74
+      },
+      {
+        "bucket": "3.5-4.0",
+        "reviews": 549,
+        "negative_count": 120,
+        "negative_rate": 21.86
+      },
+      {
+        "bucket": "4.0-4.5",
+        "reviews": 32896,
+        "negative_count": 3411,
+        "negative_rate": 10.37
+      },
+      {
+        "bucket": "4.5-5.0",
+        "reviews": 527668,
+        "negative_count": 26752,
+        "negative_rate": 5.07
+      }
+    ],
+    "precision": {
+      "sample_size": 100,
+      "estimated_fp_negation": 11,
+      "estimated_precision": 89.0
+    },
+    "sample_examples": [
+      "The location, communication and overall decor/cleanliness of the place was fine.<br/>My only issue was the listing was a bit misleading. The portable AC was one circulating fan in the bedroom. I trave",
+      "We spent 3 months here and were very happy with the airBnB which is (aside from the bathroom) very spacious. The subway was easy to reach and the UES is great area far from the crowded masses. In gene",
+      "Staying here worked out great, was near where we needed to be in Williamsburg. We never met Sebastiane in person, but he was very friendly and responsive and flexible with our arrival and departure an",
+      "Location was good and Patsy\u2019s pizza is a must visit. Would recommend bringing ear plugs as it can get noisy at night.",
+      "Yasi and Akiko have an excellent Airbnb.  Communication prior to arrival and during my stay was flawless.  All instructions were very clear and keycodes to outside door and room worked perfectly. The ",
+      "I love this room, small and cozy also i love the yard. Me and my friend got scammed, then we found this room, the \u201ccheck-in anytime\u201d really helped us! We booked this room, and the host responded so qu",
+      "Ruby and Daniel were so welcoming and addressed any issues very promptly. The apartment was in a fantastic location where I could get to everywhere either a walk or subway ride away. I\u2019m a solo travel",
+      "Pretty classic Brooklyn apartment - nice decor and amenities, great location. Host stays in a room separated from guest area by a curtain, with the shared bathroom also behind it. Had no issues with n",
+      "I generally feel I was robbed because I had money. The same guy who begs for money every night. He was staying there. Did he have 2 grand. I\u2019m not sure. The clients were a mix between foreigners and p",
+      "The house is well furnished and modern, but costumer care and communication once you stay in are terrible. My room hadn\u2019t been clean from previous occupiers at my arrival (hair and dust everywhere inc"
+    ]
+  },
+  "boston": {
+    "score_buckets": [
+      {
+        "bucket": "<3.0",
+        "reviews": 6,
+        "negative_count": 5,
+        "negative_rate": 83.33
+      },
+      {
+        "bucket": "3.0-3.5",
+        "reviews": 6,
+        "negative_count": 0,
+        "negative_rate": 0.0
+      },
+      {
+        "bucket": "3.5-4.0",
+        "reviews": 22,
+        "negative_count": 5,
+        "negative_rate": 22.73
+      },
+      {
+        "bucket": "4.0-4.5",
+        "reviews": 6767,
+        "negative_count": 832,
+        "negative_rate": 12.29
+      },
+      {
+        "bucket": "4.5-5.0",
+        "reviews": 143896,
+        "negative_count": 8114,
+        "negative_rate": 5.64
+      }
+    ],
+    "precision": {
+      "sample_size": 100,
+      "estimated_fp_negation": 9,
+      "estimated_precision": 91.0
+    },
+    "sample_examples": [
+      "The description said to expect noise due to airplanes and so I did, but there was a lot of other noise coming from who knows where. It was quite windy and something was banging on the wall everytime i",
+      "Dana and Andrew were very nice and accommodating. The place was as we expected, but could hear noises from upstairs. Cleanliness was less than perfect, but overall a comfortable stay.",
+      "Beautiful stay! Good room, and wonderfully kind family! keep in mind a lot of college kids in the area, so a little bit of extra noise on weekend evenings. As long as you remember what it was like to ",
+      "Great location. Had 3 bedrooms although the smallest bedroom doesn\u2019t have a door and you have to go through the large bedroom. The apartment is decorated well but it\u2019s an old apartment. The bathroom h",
+      "Great place to stay. Definitely recommend! Easy walking distance from the red line. Being on the first floor you may occasionally hear people upstairs, but they are very quiet. Also in the single room",
+      "Lovely space and welcoming hosts. I just wish there was a bit more separation from the hosts as it was quite noisy as they went up and down the stairs, out to the back patio, etc.",
+      "This place was awesome and perfectly located! After several days of traveling in various locations, it was a real treat to have 4 separate rooms for our two night stay. The place was just as described",
+      "Nice place to stay at Boston if you\u2019re traveling for a short trip. Location is good but noisy. The apartment was renewed and clean, but you can tell that it\u2019s an old building.",
+      "Lovely house, quiet, comfortable bed, great view in Tower Room. Charles made check in very easy, house had everything you\u2019d need. It was my first time sharing space in an Airbnb but it was completely ",
+      "Pros:   Close to sights, subways, shops and restaurants (shake shack and CVS across the street, Amorino right beside).  Clean and towels/shampoo/conditioner/soap/kitchenware all provided.  Check in wa"
+    ]
+  },
+  "chicago": {
+    "score_buckets": [
+      {
+        "bucket": "<3.0",
+        "reviews": 9,
+        "negative_count": 4,
+        "negative_rate": 44.44
+      },
+      {
+        "bucket": "3.0-3.5",
+        "reviews": 17,
+        "negative_count": 7,
+        "negative_rate": 41.18
+      },
+      {
+        "bucket": "3.5-4.0",
+        "reviews": 48,
+        "negative_count": 11,
+        "negative_rate": 22.92
+      },
+      {
+        "bucket": "4.0-4.5",
+        "reviews": 7915,
+        "negative_count": 722,
+        "negative_rate": 9.12
+      },
+      {
+        "bucket": "4.5-5.0",
+        "reviews": 299733,
+        "negative_count": 15677,
+        "negative_rate": 5.23
+      }
+    ],
+    "precision": {
+      "sample_size": 100,
+      "estimated_fp_negation": 13,
+      "estimated_precision": 87.0
+    },
+    "sample_examples": [
+      "A HOME AWAY from HOME! <br/>Great detail is placed into this home from well selected Tchotchkes, extra blankets and towels, to stem ware, Henkel knives, a popcorn machine, citrus squeezer, stainless s",
+      "What a beautiful home in a great location! We had a great stay! <br/>For future guests, some things I felt weren't clear: <br/>The entryway and staircase is very narrow. Parking was fine until the roa",
+      "We just had a very lovely stay at this air bnb (4 adults, one kid). The location could not be better- right on Wicker Park, which is great for exercise and has a playground for kiddos and a dog run ar",
+      "My group and I had a good time at this Airbnb. We appreciated all the amenities, like lots of towels, blankets, pillows, & shampoo. The neighborhood was misleading but the house stay was fine, we did ",
+      "The home was at a great location! Parking was pretty easy for the most part. The home was very clean and had all the amenities we needed.  The 70s vibe was awesome. We enjoyed the record player. The o",
+      "The space overall was very night and in a good location, right by the L for easy access to the city. The space is directly above a bar which we didn\u2019t think much of when booking but the noise was pret",
+      "They do not lie about the place being cozy. It is so stylish it felt like living in an art gallery. Marty and Rob plan every detail to make you feel welcome. It is also really close to every transport",
+      "Lovely studio, perfect location,  in a very cool area of Chicago. We couldn't rest well because of the noise of the people upstairs",
+      "Curtis could have taken a online order from Amazon to order a toilet seat and make our stay way better. The cracked toilet pinched our skin the whole stay. The bnb was Hard to get into. One body and f",
+      "Fairly good location as it\u2019s located a bit south of the loop (about 20 min walk to Millennium park). The place didn\u2019t look like the photos as there are multiple units and the pics didn\u2019t reflect our u"
+    ]
+  }
+}

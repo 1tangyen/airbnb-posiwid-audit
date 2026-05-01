@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoxelNoir POSIWID Audit — Airbnb NYC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+:root {
+  --bg: #F5F5F8;
+  --bg-grad: radial-gradient(ellipse 80% 60% at 80% 0%, #EAE6F8 0%, #F5F5F8 70%);
+  --surface: #FFFFFF;
+  --surface-2: #F0EEF8;
+  --surface-3: #ECEAF5;
+  --border: #DDD9EC;
+  --purple: #6B5E9E;
+  --purple-hover: #5B4F8E;
+  --purple-light: rgba(107,94,158,0.08);
+  --text-1: #1E1A38;
+  --text-2: #3A3360;
+  --text-3: #6A6090;
+  --text-4: #9A96B4;
+  --green: #1DB876;
+  --green-bg: rgba(29,184,118,0.08);
+  --green-border: rgba(29,184,118,0.25);
+  --amber: #D97706;
+  --amber-bg: rgba(217,119,6,0.07);
+  --amber-border: rgba(217,119,6,0.25);
+  --red: #DC2626;
+  --red-bg: rgba(220,38,38,0.06);
+  --red-border: rgba(220,38,38,0.2);
+  --sans: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--sans); background: var(--bg-grad); color: var(--text-2); line-height: 1.6; font-size: 14px; }
+nav { background: var(--purple); height: 52px; display: flex; align-items: center; padding: 0 2rem; color: #fff; }
+nav .brand { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+nav .sub { font-weight: 400; font-size: 0.85rem; opacity: 0.8; margin-left: 1rem; }
+.container { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+h1 { color: var(--text-1); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+h2 { color: var(--text-1); font-size: 1.15rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+h3 { color: var(--text-2); font-size: 0.95rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+.subtitle { color: var(--text-3); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--purple); border-radius: 12px; padding: 1rem 1.25rem; }
+.stat-card .label { font-size: 0.75rem; color: var(--text-4); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card .value { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; color: var(--text-1); }
+.stat-card .detail { font-size: 0.8rem; color: var(--text-3); margin-top: 2px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 1.5rem; }
+.signal-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.signal-badge { font-family: var(--mono); font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; border: 1px solid; font-weight: 500; }
+.badge-strong { background: var(--red-bg); border-color: var(--red-border); color: var(--red); }
+.badge-medium { background: var(--amber-bg); border-color: var(--amber-border); color: var(--amber); }
+.badge-weak { background: var(--green-bg); border-color: var(--green-border); color: var(--green); }
+.posiwid-box { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--purple); border-radius: 8px; padding: 1rem 1.5rem; margin: 1rem 0; font-size: 0.9rem; }
+.posiwid-box .label { font-family: var(--mono); font-size: 0.7rem; color: var(--purple); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.chart-wrap { position: relative; height: 300px; margin: 1rem 0; }
+.theory-tag { display: inline-block; font-family: var(--mono); font-size: 0.7rem; padding: 2px 6px; border-radius: 3px; margin-right: 4px; background: var(--purple-light); color: var(--purple); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 1rem 0; }
+th { background: var(--surface-2); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.3px; }
+th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+td { font-family: var(--mono); font-size: 0.8rem; }
+.quote { border-left: 3px solid var(--purple); padding: 0.75rem 1.25rem; margin: 1rem 0; color: var(--text-1); font-style: italic; background: var(--purple-light); border-radius: 0 8px 8px 0; }
+.footer { text-align: center; padding: 2rem; color: var(--text-4); font-size: 0.8rem; }
+/* methodology card */
+.method-card { background: var(--surface-3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.85rem; }
+.method-card summary { cursor: pointer; font-weight: 600; color: var(--text-1); font-size: 0.85rem; }
+.method-card summary:hover { color: var(--purple); }
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+@media (max-width: 700px) { .method-grid { grid-template-columns: 1fr; } }
+.method-grid .cell { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 1rem; }
+.method-grid .cell-label { font-family: var(--mono); font-size: 0.65rem; color: var(--purple); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.method-grid .cell p, .method-grid .cell ul { font-size: 0.82rem; color: var(--text-2); }
+.method-grid .cell ul { padding-left: 1.2rem; margin: 0; }
+.method-grid .cell a { color: var(--purple); text-decoration: none; border-bottom: 1px dotted var(--purple); }
+.method-grid .cell a:hover { color: var(--purple-hover); }
+.method-grid .cell code { font-family: var(--mono); font-size: 0.78rem; background: var(--surface-2); padding: 1px 4px; border-radius: 3px; }
+.full-width { grid-column: 1 / -1; }
+/* story section */
+.story-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; }
+.story-card p { margin-bottom: 1rem; color: var(--text-2); line-height: 1.75; }
+.story-card p:last-child { margin-bottom: 0; }
+.principle-box { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--purple); border-radius: 8px; padding: 1.25rem 1.75rem; margin-top: 1.5rem; font-size: 0.9rem; line-height: 1.75; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">VoxelNoir</span>
+  <span class="sub">POSIWID Audit — Airbnb NYC Platform Power Analysis</span>
+</nav>
+
+<div class="container">
+  <h1>Platform Ratings as Trust Theater</h1>
+  <p class="subtitle">Inside Airbnb NYC data (2025-03 to 2026-04) &mdash; 35K+ listings, 1M+ reviews. Testing whether platform mechanisms systematically narrow host autonomy.</p>
+
+  <!-- KEY METRICS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="label">Rating Inflation</div>
+      <div class="value">96.9%</div>
+      <div class="detail">of listings rated &ge; 4.0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Value Complaint Growth</div>
+      <div class="value">2.9x</div>
+      <div class="detail">"overpriced" rate 2015&rarr;2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Median Rating</div>
+      <div class="value">4.86</div>
+      <div class="detail">out of 5.0 &mdash; ceiling effect</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Hidden Complaints</div>
+      <div class="value">27.5K</div>
+      <div class="detail">negative text in 4.5+ listings</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SIGNAL C: REVIEW GAP -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <div class="signal-header">
+      <h2>Signal C: Review Text vs Score Gap</h2>
+      <span class="signal-badge badge-strong">STRONG</span>
+    </div>
+    <div>
+      <span class="theory-tag">Brynjolfsson</span>
+      <span class="theory-tag">POSIWID</span>
+      <span class="theory-tag">Law 14</span>
+    </div>
+    <p style="margin-top:0.75rem;">Scores are inflated to the point of uselessness. But review <em>text</em> tells a different story &mdash; and the gap is widening.</p>
+
+    <details class="method-card" open>
+      <summary>Data Source &amp; Methodology</summary>
+      <div class="method-grid">
+        <div class="cell">
+          <div class="cell-label">Data Source</div>
+          <p><strong>Reviews:</strong> <a href="https://data.insideairbnb.com/united-states/ny/new-york-city/2026-04-14/data/reviews.csv.gz" target="_blank">reviews.csv.gz</a> (2026-04-14 snapshot)</p>
+          <p><strong>Listings:</strong> <a href="https://data.insideairbnb.com/united-states/ny/new-york-city/2026-04-14/data/listings.csv.gz" target="_blank">listings.csv.gz</a> (2026-04-14 snapshot)</p>
+          <p>Source: <a href="https://insideairbnb.com/get-the-data/" target="_blank">insideairbnb.com/get-the-data</a></p>
+          <p>Total reviews: <code>1,002,258</code> (2011&ndash;2026), all with text</p>
+          <p>Total listings with ratings: <code>24,467</code></p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Method</div>
+          <p><strong>Negative signal detection:</strong> Regex pattern matching on lowercase review text. 25 negative patterns across categories: value (<code>overpriced, not worth, too expensive</code>), cleanliness (<code>dirty, unclean, cockroach</code>), deception (<code>misleading, not as described</code>), general (<code>awful, terrible, horrible</code>).</p>
+          <p><strong>Value complaint subset:</strong> 8 price-specific patterns (<code>overpriced, not worth, too expensive, pricey, rip-off</code>).</p>
+          <p><strong>Score distribution:</strong> <code>review_scores_rating</code> field from listings, binned at 0.1 intervals.</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Results: Sentiment Trend</div>
+          <ul>
+            <li>Negative rate: <code>2.78%</code> (2017 low) &rarr; <code>3.72%</code> (2026) &mdash; <strong>+34%</strong></li>
+            <li>Value complaint rate: <code>0.24%</code> (2015) &rarr; <code>0.69%</code> (2025) &mdash; <strong>+188% (2.9x)</strong></li>
+            <li>Post-COVID acceleration: both rates rose sharply from 2021 onward</li>
+            <li>2026 Q1 (partial year): negative 3.72%, value 0.58% &mdash; on track to continue uptrend</li>
+          </ul>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Results: Score Inflation</div>
+          <ul>
+            <li>Mean rating: <code>4.72</code> / 5.0</li>
+            <li>Median rating: <code>4.86</code> / 5.0</li>
+            <li><code>96.9%</code> rated &ge; 4.0 &mdash; the scale is functionally 4.0&ndash;5.0</li>
+            <li><code>85.6%</code> rated &ge; 4.5</li>
+            <li>Mean value score: <code>4.63</code> &mdash; despite 2.9x "overpriced" growth in text</li>
+            <li>In 4.5+ rated listings: <code>27,514</code> reviews contain explicit negative language</li>
+          </ul>
+        </div>
+        <div class="cell full-width">
+          <div class="cell-label">Reproducibility</div>
+          <p>Script: <code>posiwid_analysis.py</code> &rarr; function <code>analyze_review_gap()</code>. Chart data: <code>generate_charts.py</code> &rarr; <code>chart_data.json</code> keys <code>sentiment_by_year</code>, <code>score_distribution</code>. All regex patterns listed in source. Run: <code>python3 posiwid_analysis.py</code></p>
+        </div>
+      </div>
+    </details>
+
+    <h3>Negative Signal Rate Over Time</h3>
+    <div class="chart-wrap"><canvas id="chartSentiment"></canvas></div>
+
+    <h3>Score Distribution (2026-04)</h3>
+    <div class="chart-wrap"><canvas id="chartScores"></canvas></div>
+
+    <div class="posiwid-box">
+      <div class="label">POSIWID Audit</div>
+      <strong>Stated:</strong> Ratings help guests make informed decisions.<br>
+      <strong>Actual:</strong> 96.9% rated &ge; 4.0 = zero discriminatory power. Value complaints 3x growth with scores unchanged. System produces trust facade optimized for platform conversion, not guest information.
+    </div>
+
+    <div class="quote">
+      "When useful knowledge is inalienably locked in human brains, so too is the power it confers. But when it is made alienable, it enables greater concentration of decision-making and power." &mdash; Brynjolfsson, "The Turing Trap" (2022)
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SIGNAL D: DESCRIPTION HOMOGENIZATION -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <div class="signal-header">
+      <h2>Signal D: Description Homogenization</h2>
+      <span class="signal-badge badge-medium">MEDIUM-STRONG</span>
+    </div>
+    <div>
+      <span class="theory-tag">Winner</span>
+      <span class="theory-tag">POSIWID</span>
+      <span class="theory-tag">Law 3</span>
+    </div>
+    <p style="margin-top:0.75rem;">Platform SEO guidance, AI writing tools, and template suggestions have already converged listing descriptions into a narrow vocabulary.</p>
+
+    <details class="method-card" open>
+      <summary>Data Source &amp; Methodology</summary>
+      <div class="method-grid">
+        <div class="cell">
+          <div class="cell-label">Data Sources (3 snapshots)</div>
+          <p><a href="https://data.insideairbnb.com/united-states/ny/new-york-city/2025-03-01/data/listings.csv.gz" target="_blank">listings.csv.gz (2025-03-01)</a> &mdash; 37,434 listings</p>
+          <p><a href="https://data.insideairbnb.com/united-states/ny/new-york-city/2025-09-01/data/listings.csv.gz" target="_blank">listings.csv.gz (2025-09-01)</a> &mdash; 36,178 listings</p>
+          <p><a href="https://data.insideairbnb.com/united-states/ny/new-york-city/2026-04-14/data/listings.csv.gz" target="_blank">listings.csv.gz (2026-04-14)</a> &mdash; 35,036 listings</p>
+          <p>Field used: <code>description</code> (free-text listing description)</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Method</div>
+          <p><strong>TF-IDF vectorization:</strong> scikit-learn <code>TfidfVectorizer</code>, max 3,000 features, English stop words removed, min document frequency 5.</p>
+          <p><strong>Pairwise similarity:</strong> Cosine similarity on 2,000-description random subsample (seed=42). Upper triangle extracted for mean/median/P90 stats.</p>
+          <p><strong>Filtering:</strong> Descriptions &lt; 50 chars excluded. If &gt; 5,000 descriptions in snapshot, random 5,000 sample (seed=42).</p>
+          <p><strong>Description length:</strong> Character count of all descriptions &gt; 10 chars.</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Results: Similarity Scores</div>
+          <table>
+            <tr><th>Snapshot</th><th>Mean Sim</th><th>Median Sim</th><th>P90 Sim</th></tr>
+            <tr><td>2025-03</td><td>0.0522</td><td>0.0385</td><td>0.1159</td></tr>
+            <tr><td>2025-09</td><td>0.0515</td><td>0.0386</td><td>0.1144</td></tr>
+            <tr><td>2026-04</td><td>0.0536</td><td>0.0411</td><td>0.1162</td></tr>
+          </table>
+          <p>Slight upward trend in mean (+2.7%) and median (+6.8%) over 13 months.</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Results: Vocabulary &amp; Length</div>
+          <p><strong>Top 20 TF-IDF terms</strong> (nearly identical across all 3 snapshots):</p>
+          <p><code>apartment, room, bedroom, located, kitchen, manhattan, home, walk, restaurants, subway, private, bed, brooklyn, living, park, place, stay, away, new, city</code></p>
+          <p><strong>Description length:</strong> mean 354&ndash;355 chars, std 143&ndash;144, median 381&ndash;388 &mdash; remarkably stable across 13 months.</p>
+        </div>
+        <div class="cell full-width">
+          <div class="cell-label">Reproducibility</div>
+          <p>Script: <code>posiwid_analysis.py</code> &rarr; function <code>analyze_description_homogenization()</code>. Chart data: <code>generate_charts.py</code> &rarr; <code>chart_data.json</code> key <code>description_similarity</code>. Requires: <code>scikit-learn</code>. Run: <code>python3 posiwid_analysis.py</code></p>
+        </div>
+      </div>
+    </details>
+
+    <div class="posiwid-box">
+      <div class="label">POSIWID Audit</div>
+      <strong>Stated:</strong> "Every home is unique."<br>
+      <strong>Actual:</strong> Homogenization is already complete. The "vanishing latitude of choice" (Winner) has already happened &mdash; platform templates, SEO rules, and AI tools have standardized how hosts describe their homes. This is Winner's "technical arrangement" at the language level.
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SIGNAL A: PRICE VARIANCE -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <div class="signal-header">
+      <h2>Signal A: Price Variance Compression</h2>
+      <span class="signal-badge badge-weak">INCONCLUSIVE</span>
+    </div>
+    <div>
+      <span class="theory-tag">Braverman</span>
+      <span class="theory-tag">Deskilling</span>
+      <span class="theory-tag">Law 12</span>
+    </div>
+
+    <details class="method-card" open>
+      <summary>Data Source &amp; Methodology</summary>
+      <div class="method-grid">
+        <div class="cell">
+          <div class="cell-label">Data Sources</div>
+          <p>Same 3 listing snapshots as Signal D (see links above).</p>
+          <p>Field used: <code>price</code> (cleaned from "$X,XXX.XX" string to float). Filtered: <code>price &gt; 0</code> and <code>price &lt; $5,000</code>. Room type: <code>Entire home/apt</code>.</p>
+          <p>Top 5 neighbourhoods by listing count: Bedford-Stuyvesant, Midtown, Williamsburg, Harlem, Hell's Kitchen.</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Method</div>
+          <p><strong>Coefficient of Variation (CV):</strong> <code>std / mean</code> per neighbourhood per snapshot. Lower CV = more compressed pricing = less individual pricing judgment.</p>
+          <p><strong>IQR:</strong> 75th percentile minus 25th percentile per group.</p>
+          <p><strong>Hypothesis:</strong> If Smart Pricing is deskilling hosts, CV should decrease over time (price diversity shrinks as hosts follow algorithmic consensus).</p>
+        </div>
+        <div class="cell full-width">
+          <div class="cell-label">Results</div>
+          <ul>
+            <li><strong>Bedford-Stuyvesant:</strong> CV 0.66 &rarr; 0.69 &rarr; 0.63 &mdash; compression trend (supports hypothesis)</li>
+            <li><strong>Midtown:</strong> CV 1.10 &rarr; 0.88 &rarr; 0.95 &mdash; compressed then rebounded</li>
+            <li><strong>Williamsburg:</strong> CV 0.82 &rarr; 0.85 &rarr; 0.96 &mdash; divergence (contradicts)</li>
+            <li><strong>Harlem:</strong> CV 0.94 &rarr; 1.11 &rarr; 1.25 &mdash; increasing variance</li>
+            <li><strong>Hell's Kitchen:</strong> CV 1.06 &rarr; 0.83 &rarr; 1.02 &mdash; no clear trend</li>
+          </ul>
+          <p><strong>Verdict:</strong> Mixed signals. 13-month window too short. Needs 3&ndash;5 year time series with pre/post Smart Pricing launch data to confirm Braverman deskilling.</p>
+        </div>
+      </div>
+    </details>
+
+    <h3>Price CV by Neighbourhood</h3>
+    <div class="chart-wrap"><canvas id="chartPriceCV"></canvas></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SIGNAL B: PRICE SYNCHRONY -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <div class="signal-header">
+      <h2>Signal B: Price Synchrony</h2>
+      <span class="signal-badge badge-weak">INCONCLUSIVE</span>
+    </div>
+    <div>
+      <span class="theory-tag">Noble</span>
+      <span class="theory-tag">Control Path</span>
+    </div>
+
+    <details class="method-card" open>
+      <summary>Data Source &amp; Methodology</summary>
+      <div class="method-grid">
+        <div class="cell">
+          <div class="cell-label">Data Sources</div>
+          <p>Same listing snapshots. Compared earliest (2025-03) vs latest (2026-04).</p>
+          <p>Filter: <code>Entire home/apt</code>, <code>price &gt; 0</code>, <code>price &lt; $5,000</code>, neighbourhood &ge; 50 listings.</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Method</div>
+          <p><strong>Band clustering:</strong> % of listings priced within &plusmn;20% of neighbourhood median. Higher % = more synchrony = hosts following same algorithm.</p>
+          <p><strong>Hypothesis:</strong> If Noble's "control path" is active, within-band % should increase over time (pricing converges to algorithmic consensus).</p>
+        </div>
+        <div class="cell full-width">
+          <div class="cell-label">Results</div>
+          <table>
+            <tr><th>Neighbourhood</th><th>2025-03 (within &plusmn;20%)</th><th>2026-04 (within &plusmn;20%)</th><th>Direction</th></tr>
+            <tr><td>Bedford-Stuyvesant</td><td>35.3%</td><td>33.7%</td><td style="color:var(--amber)">slight decrease</td></tr>
+            <tr><td>Midtown</td><td>28.6%</td><td>25.9%</td><td style="color:var(--red)">decrease</td></tr>
+            <tr><td>Williamsburg</td><td>25.9%</td><td>31.2%</td><td style="color:var(--green)">increase</td></tr>
+            <tr><td>Harlem</td><td>29.6%</td><td>23.5%</td><td style="color:var(--red)">decrease</td></tr>
+            <tr><td>Hell's Kitchen</td><td>22.3%</td><td>26.9%</td><td style="color:var(--green)">increase</td></tr>
+          </table>
+          <p><strong>Verdict:</strong> 2/5 neighbourhoods show synchrony increase, 3/5 show decrease. Inconclusive. Needs longer time series and ideally calendar-level daily price data to detect algorithm-driven patterns.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- HOST CONCENTRATION -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <div class="signal-header">
+      <h2>Bonus: Host Concentration</h2>
+      <span class="signal-badge badge-medium">CONTEXT</span>
+    </div>
+
+    <details class="method-card" open>
+      <summary>Data Source &amp; Methodology</summary>
+      <div class="method-grid">
+        <div class="cell">
+          <div class="cell-label">Data Sources</div>
+          <p>Same 3 listing snapshots. Field: <code>host_id</code> (unique host identifier).</p>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Method</div>
+          <p>Count listings per <code>host_id</code>. Categorize: single listing, 2&ndash;10 listings, 10+ listings. Top 10 hosts' combined listing share.</p>
+        </div>
+        <div class="cell full-width">
+          <div class="cell-label">Results</div>
+          <ul>
+            <li>Top 10 hosts control <code>8.9&ndash;10.1%</code> of all listings (slight de-concentration: 10.1% &rarr; 8.9%)</li>
+            <li><code>0.8&ndash;0.9%</code> of hosts own 10+ listings</li>
+            <li><code>83.4&ndash;83.6%</code> are single-listing hosts</li>
+            <li>De-concentration may reflect NYC Local Law 18 (2023) enforcement against commercial short-term rentals</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <div class="chart-wrap"><canvas id="chartConcentration"></canvas></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- THEORY CHAIN -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <h2>The POSIWID Chain: Factory &rarr; Platform</h2>
+    <table>
+      <tr><th>Theorist</th><th>Concept</th><th>Airbnb Manifestation</th></tr>
+      <tr><td>Winner (1980)</td><td>Design = Legislation</td><td>Search ranking algorithm, SEO templates, Smart Pricing &mdash; technical arrangements that embed power before any host logs in</td></tr>
+      <tr><td>Noble (1984)</td><td>Two paths, chose control</td><td>Platform could optimize for host autonomy OR platform control. Smart Pricing = choosing the NC machine over record-playback</td></tr>
+      <tr><td>Braverman (1974)</td><td>Deskilling</td><td>Host pricing "craft" flattened by algorithmic pricing. Description uniqueness erased by template compliance</td></tr>
+      <tr><td>Brynjolfsson (2022)</td><td>Knowledge alienation</td><td>Host local knowledge aggregated into platform algorithm, then sold back as "Smart" Pricing. Augmentation pitch, automation delivery</td></tr>
+    </table>
+    <div class="quote">
+      From Winner to Noble to Braverman to Brynjolfsson: technical architecture embeds power &rarr; management chooses the control path &rarr; worker skill and judgment are systematically stripped &rarr; knowledge flows from worker to system owner. You just swap "factory" for "platform" and "worker" for "host."
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ============================================================ -->
+  <!-- THE HIDDEN TRANSCRIPT — STORY + PRINCIPLE -->
+  <!-- ============================================================ -->
+  <div class="story-card">
+    <h2 style="margin-top:0;">The Two Portraits</h2>
+
+    <p>Every spring, a large company sends out its Annual Employee Engagement Survey. The results are disaggregated by department, printed in glossy reports, and presented to the board. Last year, the company scored 4.3 out of 5 &mdash; an all-time high. The Chief People Officer called it "a testament to our culture." The survey was anonymous, technically, but it was administered through company email, one response per employee, and managers could see completion rates by team. Not who said what &mdash; but who had and hadn't participated. Within a week, every department hit 100% completion.</p>
+
+    <p>That same spring, a thread appeared on an anonymous forum called Blind, where employees verified by work email can post without their names. The thread's title: "Would you recommend working here?" In three days it collected four hundred responses. The sentiments were almost unrecognizable from the survey. "Management has no idea what we do." "The promotion criteria change every quarter." "I scored 5 on the engagement survey because my skip-level reads the department report and I'm up for a raise in June." "I love my team. I do not trust the company." The Blind thread was angrier, funnier, more specific, and more honest than anything the $200,000 survey had ever captured. No one in leadership read it.</p>
+
+    <p>The company now had two portraits of itself, painted in the same season by the same people, yet nearly irreconcilable. The official survey &mdash; administered in daylight, tied to identity, read by power &mdash; produced warmth, compliance, and silence on everything that mattered. The anonymous forum &mdash; operated in shadow, untied from consequence, invisible to power &mdash; produced the texture of actual working life. Both were data. Both were voices. But only one was heard in the boardroom. And every year the gap between the two grew wider &mdash; not because conditions worsened, but because employees learned more precisely what each channel was for.</p>
+
+    <div class="principle-box">
+      <strong>这一现象被称为"隐藏文本"（Hidden Transcript）</strong>，由耶鲁大学政治学家 James C. Scott 于 1990 年在《统治与抵抗的艺术》(<em>Domination and the Arts of Resistance</em>) 中提出。在任何权力不对称的关系中，弱势方会发展出两套平行话语：一套是权力在场时表演出的<strong>"公开文本"</strong>（Public Transcript）——顺从、合规、高分；另一套是权力缺席时才流通的<strong>"隐藏文本"</strong>——真实的不满、嘲讽和抵抗。故事中的员工满意度调查是公开文本：与身份绑定、管理层可见、后果明确，因此产出的是表演性的4.3分。匿名论坛是隐藏文本：脱离权力监视，因此承载了真实的工作体验。<strong>两者的裂缝不是测量误差——它就是权力结构最精确的投影。</strong>在我们的 Airbnb 分析中，评分系统（中位数 4.86，96.9% &ge; 4.0）是公开文本——guest 在平台监视下、与身份绑定、担心被 host 报复时给出的表演性高分；而评论文字中持续增长的负面信号（"overpriced"、"dirty"、"not worth it"，价值抱怨率十年增长近 3 倍）是隐藏文本——在平台几乎不量化、不排序、不惩罚的角落里，guest 写出了评分不敢说的话。平台只读取了公开文本，便宣称"用户满意度处于历史高位"；真相一直藏在仪表盘被设计成永远看不到的那个字段里。
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <div class="footer">
+    <strong>Data</strong>: <a href="https://insideairbnb.com/get-the-data/" target="_blank" style="color:var(--purple);">Inside Airbnb</a> (insideairbnb.com) &mdash; NYC snapshots 2025-03, 2025-09, 2026-04<br>
+    <strong>Analysis</strong>: <code>posiwid_analysis.py</code> + <code>generate_charts.py</code> &mdash; Python 3, pandas, scikit-learn, Chart.js<br>
+    <strong>Principle</strong>: James C. Scott, <em>Domination and the Arts of Resistance</em> (1990) &mdash; Hidden Transcript<br>
+    <br>
+    VoxelNoir Research Workbench &mdash; POSIWID Audit &mdash; 2026-05-01<br>
+    Writing code on the surface. Auditing power underneath.<br>
+    <strong>&mdash; Black Cat on Laptop</strong>
+  </div>
+</div>
+
+<script>
+const DATA = {"sentiment_by_year": {"years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "negative_rate": [3.39, 3.27, 3.19, 3.0, 2.78, 2.87, 2.91, 3.32, 3.6, 3.3, 3.36, 3.56, 3.62, 3.72], "value_rate": [0.35, 0.44, 0.24, 0.3, 0.31, 0.27, 0.31, 0.27, 0.34, 0.41, 0.47, 0.68, 0.69, 0.58], "total_reviews": [5728, 11152, 22656, 39193, 54595, 77230, 101100, 39014, 77876, 132498, 150737, 115950, 138110, 32162]}, "score_distribution": {"bins": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0], "counts": [118, 0, 0, 0, 3, 0, 0, 0, 0, 83, 0, 0, 2, 8, 13, 3, 8, 1, 1, 218, 1, 7, 5, 22, 81, 11, 71, 34, 38, 965, 53, 227, 338, 662, 1385, 1124, 2041, 2969, 3624, 10422, 0], "mean": 4.72, "median": 4.86, "pct_above_4": 96.9, "pct_above_45": 85.6}, "price_cv": [{"snapshot": "2025-03", "neighbourhood": "Bedford-Stuyvesant", "cv": 0.6605, "median_price": 167.0, "n": 666}, {"snapshot": "2025-03", "neighbourhood": "Midtown", "cv": 1.0993, "median_price": 280.0, "n": 937}, {"snapshot": "2025-03", "neighbourhood": "Williamsburg", "cv": 0.8162, "median_price": 207.0, "n": 455}, {"snapshot": "2025-03", "neighbourhood": "Harlem", "cv": 0.9383, "median_price": 176.0, "n": 463}, {"snapshot": "2025-03", "neighbourhood": "Hell's Kitchen", "cv": 1.0625, "median_price": 192.0, "n": 755}, {"snapshot": "2025-09", "neighbourhood": "Bedford-Stuyvesant", "cv": 0.6921, "median_price": 177.0, "n": 615}, {"snapshot": "2025-09", "neighbourhood": "Midtown", "cv": 0.8791, "median_price": 340.0, "n": 878}, {"snapshot": "2025-09", "neighbourhood": "Williamsburg", "cv": 0.8488, "median_price": 225.0, "n": 436}, {"snapshot": "2025-09", "neighbourhood": "Harlem", "cv": 1.1139, "median_price": 190.0, "n": 442}, {"snapshot": "2025-09", "neighbourhood": "Hell's Kitchen", "cv": 0.8255, "median_price": 222.0, "n": 719}, {"snapshot": "2026-04", "neighbourhood": "Bedford-Stuyvesant", "cv": 0.628, "median_price": 188.0, "n": 626}, {"snapshot": "2026-04", "neighbourhood": "Midtown", "cv": 0.9459, "median_price": 322.0, "n": 819}, {"snapshot": "2026-04", "neighbourhood": "Williamsburg", "cv": 0.9644, "median_price": 220.0, "n": 404}, {"snapshot": "2026-04", "neighbourhood": "Harlem", "cv": 1.2545, "median_price": 190.0, "n": 439}, {"snapshot": "2026-04", "neighbourhood": "Hell's Kitchen", "cv": 1.0247, "median_price": 218.0, "n": 706}], "host_concentration": [{"snapshot": "2025-03", "total_hosts": 22284, "total_listings": 37434, "single_pct": 83.4, "multi10_pct": 0.84, "top10_share": 10.1}, {"snapshot": "2025-09", "total_hosts": 21503, "total_listings": 36178, "single_pct": 83.6, "multi10_pct": 0.84, "top10_share": 9.9}, {"snapshot": "2026-04", "total_hosts": 21048, "total_listings": 35036, "single_pct": 83.6, "multi10_pct": 0.91, "top10_share": 8.9}], "description_similarity": [{"snapshot": "2025-03", "mean_sim": 0.0522, "median_sim": 0.0385, "p90_sim": 0.1159}, {"snapshot": "2025-09", "mean_sim": 0.0515, "median_sim": 0.0386, "p90_sim": 0.1144}, {"snapshot": "2026-04", "mean_sim": 0.0536, "median_sim": 0.0411, "p90_sim": 0.1162}]};
+
+new Chart(document.getElementById('chartSentiment'), {
+  type: 'line',
+  data: {
+    labels: DATA.sentiment_by_year.years,
+    datasets: [
+      {
+        label: 'Negative signal rate (%)',
+        data: DATA.sentiment_by_year.negative_rate,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.1)',
+        fill: true, tension: 0.3, pointRadius: 4,
+      },
+      {
+        label: 'Value complaint rate (%)',
+        data: DATA.sentiment_by_year.value_rate,
+        borderColor: '#D97706',
+        backgroundColor: 'rgba(217,119,6,0.1)',
+        fill: true, tension: 0.3, pointRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: { callbacks: { afterLabel: function(ctx) { return 'Reviews: ' + DATA.sentiment_by_year.total_reviews[ctx.dataIndex].toLocaleString(); } } }
+    },
+    scales: { y: { beginAtZero: true, title: { display: true, text: 'Rate (%)' } } }
+  }
+});
+
+new Chart(document.getElementById('chartScores'), {
+  type: 'bar',
+  data: {
+    labels: DATA.score_distribution.bins.map(b => b.toFixed(1)),
+    datasets: [{
+      label: 'Number of listings',
+      data: DATA.score_distribution.counts,
+      backgroundColor: DATA.score_distribution.bins.map(b => b >= 4.0 ? 'rgba(107,94,158,0.6)' : 'rgba(220,38,38,0.4)'),
+      borderColor: DATA.score_distribution.bins.map(b => b >= 4.0 ? '#6B5E9E' : '#DC2626'),
+      borderWidth: 1,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: `Mean: ${DATA.score_distribution.mean} | Median: ${DATA.score_distribution.median} | ${DATA.score_distribution.pct_above_4}% rated >= 4.0` }
+    },
+    scales: {
+      x: { title: { display: true, text: 'Rating' } },
+      y: { title: { display: true, text: 'Listings' } }
+    }
+  }
+});
+
+const hoods = [...new Set(DATA.price_cv.map(d => d.neighbourhood))];
+const snaps = [...new Set(DATA.price_cv.map(d => d.snapshot))];
+const colors = ['#6B5E9E', '#D97706', '#1DB876'];
+new Chart(document.getElementById('chartPriceCV'), {
+  type: 'bar',
+  data: {
+    labels: hoods,
+    datasets: snaps.map((s, i) => ({
+      label: s,
+      data: hoods.map(h => { const d = DATA.price_cv.find(x => x.snapshot === s && x.neighbourhood === h); return d ? d.cv : 0; }),
+      backgroundColor: colors[i] + '80', borderColor: colors[i], borderWidth: 1,
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: 'Coefficient of Variation' } } }
+  }
+});
+
+new Chart(document.getElementById('chartConcentration'), {
+  type: 'bar',
+  data: {
+    labels: DATA.host_concentration.map(d => d.snapshot),
+    datasets: [
+      { label: 'Single listing (%)', data: DATA.host_concentration.map(d => d.single_pct), backgroundColor: 'rgba(107,94,158,0.5)', borderColor: '#6B5E9E', borderWidth: 1, },
+      { label: 'Top 10 hosts share (%)', data: DATA.host_concentration.map(d => d.top10_share), backgroundColor: 'rgba(220,38,38,0.5)', borderColor: '#DC2626', borderWidth: 1, }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '%' } } }
+  }
+});
+</script>
+</body>
+</html>
