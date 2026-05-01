@@ -2,7 +2,7 @@
 
 > **POSIWID** (The Purpose Of a System Is What It Does) — Stafford Beer, 1974
 
-![Dashboard Overview](assets/dashboard_hero.png)
+![Dashboard Overview](airbnb_posiwid_audit/assets/dashboard_hero.png)
 
 ## Research Question
 
@@ -37,7 +37,7 @@ We test three core signals and one supplementary, each grounded in political eco
 
 The most striking finding: **review scores and review text tell different stories**.
 
-![Hidden Transcript Data](assets/charts_hidden_transcript.png)
+![Hidden Transcript Data](airbnb_posiwid_audit/assets/charts_hidden_transcript.png)
 
 In NYC alone, **26,857 reviews** describe dirty rooms, misleading photos, noise, or safety concerns — for listings officially rated 4.5+. The negative rate in "excellent" listings (5.1–5.7%) is nearly identical to the overall rate (5.7–6.2%). **High scores do not predict absence of negative experiences.**
 
@@ -47,19 +47,19 @@ This is not a data quality issue — it is the **Hidden Transcript** (James C. S
 
 ## Sentiment Trends Across Cities
 
-![Sentiment Trends](assets/charts_sentiment_trends.png)
+![Sentiment Trends](airbnb_posiwid_audit/assets/charts_sentiment_trends.png)
 
 Negative sentiment rate (left) and value complaint rate (right) over time across all three cities. Value complaints have roughly doubled since 2015.
 
 ## The Gradient Test & Precision Validation
 
-![Score Buckets and Validation](assets/charts_score_buckets_validation.png)
+![Score Buckets and Validation](airbnb_posiwid_audit/assets/charts_score_buckets_validation.png)
 
 Left: Negative text rate drops sharply from low-scoring to high-scoring listings — scores are not meaningless. But the 4.5-5.0 bucket (where 86-91% of listings cluster) still contains 5-6% negative text — tens of thousands of complaints invisible at the score level. Right: Regex-based detection validated at 87-91% precision.
 
 ## Host Concentration
 
-![Host Concentration](assets/charts_host_concentration.png)
+![Host Concentration](airbnb_posiwid_audit/assets/charts_host_concentration.png)
 
 Boston stands out: only 65% single-listing hosts, and the top 10 hosts control **24.7%** of all listings — nearly 3x NYC's 8.4%. The "sharing economy" narrative collapses hardest where concentration is highest.
 
