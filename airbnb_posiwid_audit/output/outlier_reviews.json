@@ -1,0 +1,853 @@
+{
+  "nyc": {
+    "city": "nyc",
+    "distribution": {
+      "eligible_listings": 5128,
+      "mean_neg_rate": 0.0563,
+      "std_neg_rate": 0.0544,
+      "q1": 0.0225,
+      "median": 0.0452,
+      "q3": 0.0755,
+      "iqr": 0.053,
+      "mild_threshold": 0.1551,
+      "extreme_threshold": 0.2346,
+      "zscore_2_threshold": 0.1652,
+      "zscore_3_threshold": 0.2197
+    },
+    "outlier_summary": {
+      "mild_outlier_count": 254,
+      "mild_outlier_pct": 4.95,
+      "extreme_outlier_count": 72,
+      "extreme_outlier_pct": 1.4
+    },
+    "top_outliers": [
+      {
+        "listing_id": 54292164,
+        "neg_rate": 0.5333,
+        "neg_count": 8,
+        "total_reviews": 15,
+        "zscore": 8.76,
+        "score": 4.53,
+        "price": 147.5,
+        "neighbourhood": "Chelsea",
+        "room_type": "Entire home/apt",
+        "host_listings": 15
+      },
+      {
+        "listing_id": 32273036,
+        "neg_rate": 0.5,
+        "neg_count": 7,
+        "total_reviews": 14,
+        "zscore": 8.15,
+        "score": 5.0,
+        "price": 82.45,
+        "neighbourhood": "Woodside",
+        "room_type": "Private room",
+        "host_listings": 145
+      },
+      {
+        "listing_id": 52551973,
+        "neg_rate": 0.5,
+        "neg_count": 8,
+        "total_reviews": 16,
+        "zscore": 8.15,
+        "score": 4.5,
+        "price": 176.95,
+        "neighbourhood": "Lower East Side",
+        "room_type": "Entire home/apt",
+        "host_listings": 10
+      },
+      {
+        "listing_id": 4621713,
+        "neg_rate": 0.4667,
+        "neg_count": 7,
+        "total_reviews": 15,
+        "zscore": 7.54,
+        "score": 4.53,
+        "price": 302.73,
+        "neighbourhood": "Gramercy",
+        "room_type": "Entire home/apt",
+        "host_listings": 27
+      },
+      {
+        "listing_id": 41749993,
+        "neg_rate": 0.4667,
+        "neg_count": 7,
+        "total_reviews": 15,
+        "zscore": 7.54,
+        "score": 4.93,
+        "price": 210.27,
+        "neighbourhood": "Williamsburg",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 53475354,
+        "neg_rate": 0.4615,
+        "neg_count": 6,
+        "total_reviews": 13,
+        "zscore": 7.44,
+        "score": 4.92,
+        "price": 193.03,
+        "neighbourhood": "East Harlem",
+        "room_type": "Entire home/apt",
+        "host_listings": 53
+      },
+      {
+        "listing_id": 38584439,
+        "neg_rate": 0.4545,
+        "neg_count": 5,
+        "total_reviews": 11,
+        "zscore": 7.31,
+        "score": 4.58,
+        "price": 192.07,
+        "neighbourhood": "Upper East Side",
+        "room_type": "Entire home/apt",
+        "host_listings": 28
+      },
+      {
+        "listing_id": 39749681,
+        "neg_rate": 0.4167,
+        "neg_count": 5,
+        "total_reviews": 12,
+        "zscore": 6.62,
+        "score": 4.54,
+        "price": 272.87,
+        "neighbourhood": "East Harlem",
+        "room_type": "Entire home/apt",
+        "host_listings": 57
+      },
+      {
+        "listing_id": 1956677,
+        "neg_rate": 0.4,
+        "neg_count": 6,
+        "total_reviews": 15,
+        "zscore": 6.31,
+        "score": 4.86,
+        "price": 169.75,
+        "neighbourhood": "Mott Haven",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 51534404,
+        "neg_rate": 0.4,
+        "neg_count": 4,
+        "total_reviews": 10,
+        "zscore": 6.31,
+        "score": 4.9,
+        "price": 161.32,
+        "neighbourhood": "Corona",
+        "room_type": "Entire home/apt",
+        "host_listings": 3
+      },
+      {
+        "listing_id": 53875417,
+        "neg_rate": 0.4,
+        "neg_count": 4,
+        "total_reviews": 10,
+        "zscore": 6.31,
+        "score": 4.8,
+        "price": 202.76,
+        "neighbourhood": "Lower East Side",
+        "room_type": "Entire home/apt",
+        "host_listings": 10
+      },
+      {
+        "listing_id": 54163912,
+        "neg_rate": 0.4,
+        "neg_count": 6,
+        "total_reviews": 15,
+        "zscore": 6.31,
+        "score": 4.53,
+        "price": 121.38,
+        "neighbourhood": "Washington Heights",
+        "room_type": "Entire home/apt",
+        "host_listings": 43
+      },
+      {
+        "listing_id": 52551120,
+        "neg_rate": 0.3846,
+        "neg_count": 5,
+        "total_reviews": 13,
+        "zscore": 6.03,
+        "score": 4.67,
+        "price": 178.5,
+        "neighbourhood": "Lower East Side",
+        "room_type": "Entire home/apt",
+        "host_listings": 10
+      },
+      {
+        "listing_id": 53967226,
+        "neg_rate": 0.3846,
+        "neg_count": 5,
+        "total_reviews": 13,
+        "zscore": 6.03,
+        "score": 4.77,
+        "price": 195.27,
+        "neighbourhood": "East Harlem",
+        "room_type": "Entire home/apt",
+        "host_listings": 3
+      },
+      {
+        "listing_id": 30756898,
+        "neg_rate": 0.3684,
+        "neg_count": 7,
+        "total_reviews": 19,
+        "zscore": 5.73,
+        "score": 4.95,
+        "price": 69.82,
+        "neighbourhood": "Woodside",
+        "room_type": "Private room",
+        "host_listings": 145
+      },
+      {
+        "listing_id": 454763,
+        "neg_rate": 0.3636,
+        "neg_count": 4,
+        "total_reviews": 11,
+        "zscore": 5.64,
+        "score": 4.82,
+        "price": 115.07,
+        "neighbourhood": "Inwood",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 33917958,
+        "neg_rate": 0.3571,
+        "neg_count": 5,
+        "total_reviews": 14,
+        "zscore": 5.53,
+        "score": 5.0,
+        "price": 84.62,
+        "neighbourhood": "Woodside",
+        "room_type": "Private room",
+        "host_listings": 145
+      },
+      {
+        "listing_id": 17929219,
+        "neg_rate": 0.3393,
+        "neg_count": 19,
+        "total_reviews": 56,
+        "zscore": 5.2,
+        "score": 4.73,
+        "price": 493.17,
+        "neighbourhood": "West Village",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 1655550,
+        "neg_rate": 0.3333,
+        "neg_count": 4,
+        "total_reviews": 12,
+        "zscore": 5.09,
+        "score": 4.5,
+        "price": 262.87,
+        "neighbourhood": "Hell's Kitchen",
+        "room_type": "Entire home/apt",
+        "host_listings": 250
+      },
+      {
+        "listing_id": 11381526,
+        "neg_rate": 0.3333,
+        "neg_count": 6,
+        "total_reviews": 18,
+        "zscore": 5.09,
+        "score": 4.68,
+        "price": 199.13,
+        "neighbourhood": "Little Italy",
+        "room_type": "Entire home/apt",
+        "host_listings": 261
+      }
+    ],
+    "by_room_type": {
+      "Entire home/apt": {
+        "mild_outlier_count": 192,
+        "mean_neg_rate": 0.2268
+      },
+      "Private room": {
+        "mild_outlier_count": 62,
+        "mean_neg_rate": 0.2146
+      }
+    },
+    "by_host_scale": {
+      "single": {
+        "mild_outlier_count": 87,
+        "mean_neg_rate": 0.2148
+      },
+      "small_2-4": {
+        "mild_outlier_count": 40,
+        "mean_neg_rate": 0.211
+      },
+      "medium_5-9": {
+        "mild_outlier_count": 24,
+        "mean_neg_rate": 0.1918
+      },
+      "large_10+": {
+        "mild_outlier_count": 103,
+        "mean_neg_rate": 0.2438
+      }
+    },
+    "quality_samples": [
+      {
+        "listing_id": 54292164,
+        "sample_negative_reviews": [
+          "Clean and well-organized. Only issue: noisy street due to construction (temporary) and business activity.",
+          "Clean, safe, comfortable and central!  All amenities you need for a long stay.  Very clean space.  Good heat and air conditioning, spacious, comfortable bed.  Fantastic skylight!  Right in the middle ",
+          "Issac is a great host.  The place is clean and functional. The skylight is a huge bonus makes a smaller space even more livable. It can get on the warmer side some days But it was very cool most days ",
+          "We stayed a month and found the location ideal for getting to all parts of Manhattan (and some parts of Brooklyn). Several subway lines are very nearby and walking out into the flower-lined sidewalks ",
+          "The unit's central heating was unbearably hot, with only two options: a noisy AC or opening windows to loud street noise. Contrary to some reviews, nights were noisy with frequent truck activity and m"
+        ]
+      },
+      {
+        "listing_id": 32273036,
+        "sample_negative_reviews": [
+          "Nice place to stay for a longer duration! The hosts have provided everything needed for daily living and someone came once a week to clean the common areas and take out trash/recycling, which was very",
+          "I have booked multiple times with Kaz\u2019s company and I am never disappointed. The room is more space than I needed and the private bath just adds to the comfort. This room is located near a subway line",
+          "Some times it smells bad at the entrance, although they try to address the problem",
+          "It was a perfect stay for me. But remember folks, there is trainway just next to house so the place is noisy. If you don't mind it, there is no problem.",
+          "Definitely recommend this place. The trians did make some noise, but after a while i just got used to it. The room is spacious with good sunlight"
+        ]
+      },
+      {
+        "listing_id": 52551973,
+        "sample_negative_reviews": [
+          "Karen's place is in a great convenient neighborhood near some really good restaurants, a Whole Foods, Russ & Daughters and SoHo.  There's a great laundromat down the street also that does laundry with",
+          "Very good location to be in the lower east side. However very loud on weekend nights to 4am as it is next to a club.",
+          "Really cute unit, with plenty of space for myself and a few friends (at least by NY standards).  Great location also. <br/>I was a bit worried as I read reviews that the noise would be an issue, but I",
+          "I overall enjoyed my stay at this property. The place is very clean and well maintained with most amenities you would need. Check in was easy and karen responded very quickly to all inquiries. However",
+          "Although small, it is a very useful apartment. The apartment janitor is very polite and helpful. I like the house's location\u2014it is very close to everything. :) The only thing that bothered me about th"
+        ]
+      }
+    ]
+  },
+  "boston": {
+    "city": "boston",
+    "distribution": {
+      "eligible_listings": 883,
+      "mean_neg_rate": 0.0547,
+      "std_neg_rate": 0.0518,
+      "q1": 0.0189,
+      "median": 0.0423,
+      "q3": 0.0727,
+      "iqr": 0.0538,
+      "mild_threshold": 0.1533,
+      "extreme_threshold": 0.234,
+      "zscore_2_threshold": 0.1583,
+      "zscore_3_threshold": 0.2101
+    },
+    "outlier_summary": {
+      "mild_outlier_count": 46,
+      "mild_outlier_pct": 5.21,
+      "extreme_outlier_count": 10,
+      "extreme_outlier_pct": 1.13
+    },
+    "top_outliers": [
+      {
+        "listing_id": 48883519,
+        "neg_rate": 0.4054,
+        "neg_count": 90,
+        "total_reviews": 222,
+        "zscore": 6.77,
+        "score": 4.54,
+        "price": 292.0,
+        "neighbourhood": "Downtown",
+        "room_type": "Entire home/apt",
+        "host_listings": 59
+      },
+      {
+        "listing_id": 45641345,
+        "neg_rate": 0.4,
+        "neg_count": 4,
+        "total_reviews": 10,
+        "zscore": 6.66,
+        "score": 4.5,
+        "price": 35.0,
+        "neighbourhood": "Roslindale",
+        "room_type": "Private room",
+        "host_listings": 3
+      },
+      {
+        "listing_id": 50174682,
+        "neg_rate": 0.3319,
+        "neg_count": 77,
+        "total_reviews": 232,
+        "zscore": 5.35,
+        "score": 4.73,
+        "price": 341.0,
+        "neighbourhood": "Downtown",
+        "room_type": "Entire home/apt",
+        "host_listings": 59
+      },
+      {
+        "listing_id": 50730611,
+        "neg_rate": 0.2872,
+        "neg_count": 54,
+        "total_reviews": 188,
+        "zscore": 4.49,
+        "score": 4.69,
+        "price": 303.0,
+        "neighbourhood": "Bay Village",
+        "room_type": "Entire home/apt",
+        "host_listings": 59
+      },
+      {
+        "listing_id": 53148483,
+        "neg_rate": 0.2824,
+        "neg_count": 61,
+        "total_reviews": 216,
+        "zscore": 4.4,
+        "score": 4.71,
+        "price": 593.0,
+        "neighbourhood": "Downtown",
+        "room_type": "Entire home/apt",
+        "host_listings": 59
+      },
+      {
+        "listing_id": 49541030,
+        "neg_rate": 0.2644,
+        "neg_count": 55,
+        "total_reviews": 208,
+        "zscore": 4.05,
+        "score": 4.66,
+        "price": 254.0,
+        "neighbourhood": "Bay Village",
+        "room_type": "Entire home/apt",
+        "host_listings": 59
+      },
+      {
+        "listing_id": 17223845,
+        "neg_rate": 0.2632,
+        "neg_count": 5,
+        "total_reviews": 19,
+        "zscore": 4.02,
+        "score": 4.58,
+        "price": 45.0,
+        "neighbourhood": "Dorchester",
+        "room_type": "Private room",
+        "host_listings": 27
+      },
+      {
+        "listing_id": 49512414,
+        "neg_rate": 0.2383,
+        "neg_count": 46,
+        "total_reviews": 193,
+        "zscore": 3.54,
+        "score": 4.78,
+        "price": 235.0,
+        "neighbourhood": "Downtown",
+        "room_type": "Entire home/apt",
+        "host_listings": 59
+      },
+      {
+        "listing_id": 12372052,
+        "neg_rate": 0.2373,
+        "neg_count": 14,
+        "total_reviews": 59,
+        "zscore": 3.52,
+        "score": 4.71,
+        "price": 163.0,
+        "neighbourhood": "Charlestown",
+        "room_type": "Entire home/apt",
+        "host_listings": 12
+      },
+      {
+        "listing_id": 45493742,
+        "neg_rate": 0.2358,
+        "neg_count": 83,
+        "total_reviews": 352,
+        "zscore": 3.5,
+        "score": 4.76,
+        "price": 644.0,
+        "neighbourhood": "Downtown",
+        "room_type": "Entire home/apt",
+        "host_listings": 39
+      }
+    ],
+    "by_room_type": {
+      "Entire home/apt": {
+        "mild_outlier_count": 38,
+        "mean_neg_rate": 0.2075
+      },
+      "Private room": {
+        "mild_outlier_count": 8,
+        "mean_neg_rate": 0.2215
+      }
+    },
+    "by_host_scale": {
+      "single": {
+        "mild_outlier_count": 2,
+        "mean_neg_rate": 0.1623
+      },
+      "small_2-4": {
+        "mild_outlier_count": 4,
+        "mean_neg_rate": 0.2465
+      },
+      "medium_5-9": {
+        "mild_outlier_count": 4,
+        "mean_neg_rate": 0.1848
+      },
+      "large_10+": {
+        "mild_outlier_count": 36,
+        "mean_neg_rate": 0.2113
+      }
+    },
+    "quality_samples": [
+      {
+        "listing_id": 48883519,
+        "sample_negative_reviews": [
+          "Great location! the apartment is good, enough space.<br/>Cons: there is a club  same street, expect loud music on weekends and noise, the apartament could be a bit more clean",
+          "In a word? Disgusting. Dog hair everywhere. Stained sofa, stained floor. I got an allergic reaction, I ran away after 5",
+          "Overall this spot is OK. Location is key and in that this place succeeds.  You are in the depth of the theatre district. You walk out the door and you\u2019re right there! <br/>Unfortunately other than tha",
+          "This was a great stay! Nicely decorated, super comfortable bed. Location was right downtown. It is on the same street as some clubs, so on Saturday night I heard some music. But I didn\u2019t hear any nois",
+          "pretty nice location, a bit noisy because a bar next to the apartment, clean apartment"
+        ]
+      },
+      {
+        "listing_id": 45641345,
+        "sample_negative_reviews": [
+          "It\u2019s true what they say: you get what you pay for. At $33/night, don\u2019t expect a spectacular stay if that\u2019s the experience you\u2019re seeking. It wasn\u2019t terrible, but a more thorough cleaning was needed in",
+          "pretty good place overall, but I'd agree with the last reviewer, it is pretty basic, don't expect any extra luxuries. good size kitchen, 3 rooms sharing one bathroom so it could get dirty at times but",
+          "The place has a great price. Your room is clean, but the house can get pretty dirty because you share with two other airbnb rooms with up to 2 guests each. The on-site washer/dryer requires quarters t",
+          "Perfect place for a month-long stay. No AC in the common dining/kitchen area, but you do get a window AC in your private bedroom that works very well. Sunny and bright. More communal pots and pans tha"
+        ]
+      },
+      {
+        "listing_id": 50174682,
+        "sample_negative_reviews": [
+          "Very clear information, great location, nice apartment and lovely cleaners. It can be a bit loud, but that\u2019s to be expected staying in Downtown. Highly recommend it",
+          "This unit is at an amazing location! It is only a few minute walk to Boston Common. It is right next to a late night venue so it gets loud around 1am-2am on the weekend. Noise level is slightly better",
+          "Great place, clean, comfortable, exactly as advertised, host was very prompt and responsive, check in and check out was very easy to follow and easy to do. Would stay here again. One very slight downs",
+          "Excellent place. Loved the location. So close to everything in Boston.  Some may find it noisy on weekend evenings but we didn't mind- adds to the charm of theater district living.",
+          "The location is super convenient! Just a quick walk away from Chinatown and other nearby train stops. There are a lot of restaurant and bar options! It does get a little noisy at night but it usually "
+        ]
+      }
+    ]
+  },
+  "chicago": {
+    "city": "chicago",
+    "distribution": {
+      "eligible_listings": 1938,
+      "mean_neg_rate": 0.0515,
+      "std_neg_rate": 0.0453,
+      "q1": 0.0222,
+      "median": 0.041,
+      "q3": 0.0677,
+      "iqr": 0.0455,
+      "mild_threshold": 0.136,
+      "extreme_threshold": 0.2042,
+      "zscore_2_threshold": 0.1421,
+      "zscore_3_threshold": 0.1875
+    },
+    "outlier_summary": {
+      "mild_outlier_count": 108,
+      "mild_outlier_pct": 5.57,
+      "extreme_outlier_count": 23,
+      "extreme_outlier_pct": 1.19
+    },
+    "top_outliers": [
+      {
+        "listing_id": 25364757,
+        "neg_rate": 0.3813,
+        "neg_count": 236,
+        "total_reviews": 619,
+        "zscore": 7.28,
+        "score": 4.81,
+        "price": 84.0,
+        "neighbourhood": "Uptown",
+        "room_type": "Entire home/apt",
+        "host_listings": 17
+      },
+      {
+        "listing_id": 37417133,
+        "neg_rate": 0.3696,
+        "neg_count": 17,
+        "total_reviews": 46,
+        "zscore": 7.02,
+        "score": 4.52,
+        "price": 89.0,
+        "neighbourhood": "Rogers Park",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 7176158,
+        "neg_rate": 0.3455,
+        "neg_count": 123,
+        "total_reviews": 356,
+        "zscore": 6.49,
+        "score": 4.9,
+        "price": 90.0,
+        "neighbourhood": "Logan Square",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 29308967,
+        "neg_rate": 0.3,
+        "neg_count": 3,
+        "total_reviews": 10,
+        "zscore": 5.48,
+        "score": 4.5,
+        "price": 123.0,
+        "neighbourhood": "North Lawndale",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 48997777,
+        "neg_rate": 0.2953,
+        "neg_count": 44,
+        "total_reviews": 149,
+        "zscore": 5.38,
+        "score": 4.84,
+        "price": 297.0,
+        "neighbourhood": "Lincoln Park",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 50248233,
+        "neg_rate": 0.2941,
+        "neg_count": 5,
+        "total_reviews": 17,
+        "zscore": 5.35,
+        "score": 4.5,
+        "price": 216.0,
+        "neighbourhood": "Douglas",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 23233115,
+        "neg_rate": 0.278,
+        "neg_count": 62,
+        "total_reviews": 223,
+        "zscore": 5.0,
+        "score": 4.85,
+        "price": 95.0,
+        "neighbourhood": "North Center",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 49515824,
+        "neg_rate": 0.2753,
+        "neg_count": 68,
+        "total_reviews": 247,
+        "zscore": 4.94,
+        "score": 4.81,
+        "price": 52.0,
+        "neighbourhood": "Humboldt Park",
+        "room_type": "Private room",
+        "host_listings": 17
+      },
+      {
+        "listing_id": 49507376,
+        "neg_rate": 0.2609,
+        "neg_count": 48,
+        "total_reviews": 184,
+        "zscore": 4.62,
+        "score": 4.73,
+        "price": 52.0,
+        "neighbourhood": "Humboldt Park",
+        "room_type": "Private room",
+        "host_listings": 17
+      },
+      {
+        "listing_id": 54384620,
+        "neg_rate": 0.259,
+        "neg_count": 36,
+        "total_reviews": 139,
+        "zscore": 4.58,
+        "score": 4.78,
+        "price": 218.0,
+        "neighbourhood": "Logan Square",
+        "room_type": "Entire home/apt",
+        "host_listings": 30
+      },
+      {
+        "listing_id": 15599810,
+        "neg_rate": 0.251,
+        "neg_count": 61,
+        "total_reviews": 243,
+        "zscore": 4.4,
+        "score": 4.8,
+        "price": 75.0,
+        "neighbourhood": "Lake View",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 45334247,
+        "neg_rate": 0.25,
+        "neg_count": 9,
+        "total_reviews": 36,
+        "zscore": 4.38,
+        "score": 4.78,
+        "price": 96.0,
+        "neighbourhood": "Near West Side",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 25364755,
+        "neg_rate": 0.2456,
+        "neg_count": 155,
+        "total_reviews": 631,
+        "zscore": 4.28,
+        "score": 4.83,
+        "price": 84.0,
+        "neighbourhood": "Uptown",
+        "room_type": "Entire home/apt",
+        "host_listings": 17
+      },
+      {
+        "listing_id": 17956375,
+        "neg_rate": 0.2308,
+        "neg_count": 3,
+        "total_reviews": 13,
+        "zscore": 3.96,
+        "score": 4.54,
+        "price": 159.0,
+        "neighbourhood": "Rogers Park",
+        "room_type": "Entire home/apt",
+        "host_listings": 2
+      },
+      {
+        "listing_id": 48381059,
+        "neg_rate": 0.2273,
+        "neg_count": 40,
+        "total_reviews": 176,
+        "zscore": 3.88,
+        "score": 4.77,
+        "price": 207.0,
+        "neighbourhood": "Lake View",
+        "room_type": "Entire home/apt",
+        "host_listings": 14
+      },
+      {
+        "listing_id": 50006147,
+        "neg_rate": 0.2239,
+        "neg_count": 45,
+        "total_reviews": 201,
+        "zscore": 3.8,
+        "score": 4.77,
+        "price": 193.0,
+        "neighbourhood": "Loop",
+        "room_type": "Entire home/apt",
+        "host_listings": 25
+      },
+      {
+        "listing_id": 49516679,
+        "neg_rate": 0.221,
+        "neg_count": 59,
+        "total_reviews": 267,
+        "zscore": 3.74,
+        "score": 4.77,
+        "price": 58.0,
+        "neighbourhood": "Humboldt Park",
+        "room_type": "Private room",
+        "host_listings": 17
+      },
+      {
+        "listing_id": 44402955,
+        "neg_rate": 0.2203,
+        "neg_count": 26,
+        "total_reviews": 118,
+        "zscore": 3.73,
+        "score": 4.64,
+        "price": 84.0,
+        "neighbourhood": "Logan Square",
+        "room_type": "Entire home/apt",
+        "host_listings": 18
+      },
+      {
+        "listing_id": 27584585,
+        "neg_rate": 0.2179,
+        "neg_count": 51,
+        "total_reviews": 234,
+        "zscore": 3.67,
+        "score": 4.63,
+        "price": 244.0,
+        "neighbourhood": "Lake View",
+        "room_type": "Entire home/apt",
+        "host_listings": 1
+      },
+      {
+        "listing_id": 46414655,
+        "neg_rate": 0.213,
+        "neg_count": 23,
+        "total_reviews": 108,
+        "zscore": 3.56,
+        "score": 4.66,
+        "price": 190.0,
+        "neighbourhood": "Lake View",
+        "room_type": "Entire home/apt",
+        "host_listings": 2
+      }
+    ],
+    "by_room_type": {
+      "Entire home/apt": {
+        "mild_outlier_count": 94,
+        "mean_neg_rate": 0.1823
+      },
+      "Private room": {
+        "mild_outlier_count": 14,
+        "mean_neg_rate": 0.1815
+      }
+    },
+    "by_host_scale": {
+      "single": {
+        "mild_outlier_count": 31,
+        "mean_neg_rate": 0.1951
+      },
+      "small_2-4": {
+        "mild_outlier_count": 27,
+        "mean_neg_rate": 0.1746
+      },
+      "medium_5-9": {
+        "mild_outlier_count": 21,
+        "mean_neg_rate": 0.1592
+      },
+      "large_10+": {
+        "mild_outlier_count": 29,
+        "mean_neg_rate": 0.1922
+      }
+    },
+    "quality_samples": [
+      {
+        "listing_id": 25364757,
+        "sample_negative_reviews": [
+          "Adorable apartment, so close to transit, and really easy to navigate thanks to the host. The lock box may be a little tricky and outside can be a bit noisy but you can\u2019t beat the price and location.",
+          "Very clean apartment and nice location. However not aware that the apartment was directly above a bar and played music till 5 am. The walls were very thin and could hear the neighbors conversations. I",
+          "Nala's place is amazing. It is brand new and stylish while providing a very comfortable and homey feeling. Check-in and check-out were super easy and Nala is very responsive to any requests/ emails. T",
+          "Nala is a great host! The door to get in the place was a bit tricky but once I made it inside it was incredibly clean, not a spot or speck of dust. The bedding was all extremely clean and comfortable.",
+          "Definitely the cleanest space with the most comfortable bed we have ever slept on. I am sad to leave it behind. Clean kitchen, super clean bathroom, giant tv. As far as the neighborhood, it was nice &"
+        ]
+      },
+      {
+        "listing_id": 37417133,
+        "sample_negative_reviews": [
+          "Accurate description of premises. Good location.   Near a busy street so a bit noisy with windows open.  Minimal amenities in kitchen.  Overall a good stay.",
+          "The place was just as advertised. Very clear instructions and easy parking. The bed is comfortable. I wouldn't recommend if you're a light sleeper as the walls are thin and the neighbors are noisy. Ot",
+          "Margo\u2019s place was very clean and specious for a one bedroom apartment, with thoughtful touches such as a sleep machine & travel size shampoo/conditioner. The neighbors are noisy, so be aware of that i",
+          "Margo's apartment is clean, well appointed, convenient, and a good value for the Chicago area.  Guests should be aware, though, that the building is directly on busy Sheridan Road.  If traffic noise a",
+          "Staying at Margo\u2019s the last month was a true retreat!! I\u2019ve never been in Chicago for more than a few days and so was nervous deciding a place to rest my head for a month. I am so happy I chose Margo\u2019"
+        ]
+      },
+      {
+        "listing_id": 7176158,
+        "sample_negative_reviews": [
+          "Alyson is very friendly and helpful. She really try hard to provide the best experience to her guests! Moreover, she's very reactive to any needs/issues you may encounter/message her, and always try t",
+          "Allyson's apt was a nice place to stay for our week end in Chicago. Everything was just as described in the listing. The apartment is neat, comfortable, and spacious but noisy at night due to proximit",
+          "Logan Square and especially the flat  very close to the blue line (which can make the flat noisy sometimes but nothing to prevent normal people to sleep) are very well situated to visit Chicago. My fr",
+          "It was a great space! A heads up: The train and the bar below are definitely audible, but they didn't bother us in the least. The two noises are more like value adds--white noise to help making sleepi",
+          "Allyson place was very clean. The place is above the bar and next to train so can be quite loud , but that's fully disclosed. She was really accommodating about check in and check out times"
+        ]
+      }
+    ]
+  }
+}

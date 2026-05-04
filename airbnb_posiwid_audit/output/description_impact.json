@@ -1,0 +1,365 @@
+{
+  "nyc": {
+    "city": "nyc",
+    "description_stats": {
+      "mean_length": 381.0,
+      "median_length": 427.0,
+      "mean_word_count": 62.0,
+      "pct_with_luxury_keywords": 9.9,
+      "pct_with_modern_keywords": 31.1,
+      "pct_with_cozy_keywords": 28.6,
+      "pct_with_location_keywords": 54.7,
+      "mean_centroid_distance": 0.7771
+    },
+    "description_vs_price": {
+      "correlations": {
+        "desc_length": 0.0663,
+        "desc_word_count": 0.0291,
+        "luxury_density": 0.1935,
+        "modern_density": 0.078,
+        "cozy_density": -0.0531,
+        "location_density": -0.0206,
+        "marketing_density": 0.0856
+      },
+      "price_by_description_length": [
+        {
+          "quartile": "short",
+          "median_price": 147.5,
+          "mean_price": 229.08,
+          "n": 4805
+        },
+        {
+          "quartile": "medium",
+          "median_price": 160.16,
+          "mean_price": 229.74,
+          "n": 4838
+        },
+        {
+          "quartile": "long",
+          "median_price": 174.41,
+          "mean_price": 250.33,
+          "n": 4903
+        },
+        {
+          "quartile": "very_long",
+          "median_price": 174.42,
+          "mean_price": 262.38,
+          "n": 4672
+        }
+      ],
+      "luxury_premium": {
+        "with_luxury_keywords_median": 260.32,
+        "without_luxury_keywords_median": 154.86,
+        "premium_pct": 68.1
+      },
+      "centroid_distance_vs_price_corr": 0.0237,
+      "n": 19218
+    },
+    "description_vs_reviews": {
+      "score_correlations": {
+        "desc_length": 0.0864,
+        "desc_word_count": 0.0804,
+        "luxury_density": 0.019,
+        "modern_density": 0.0568,
+        "cozy_density": 0.0172,
+        "location_density": -0.0338,
+        "marketing_density": 0.0571
+      },
+      "neg_rate_correlations": {
+        "desc_length": -0.0308,
+        "desc_word_count": -0.0362,
+        "luxury_density": -0.021,
+        "modern_density": 0.0192,
+        "cozy_density": -0.0026,
+        "location_density": 0.0148,
+        "marketing_density": 0.0058
+      },
+      "neg_rate_by_marketing_density": [
+        {
+          "quartile": "high",
+          "mean_neg_rate": 0.0627,
+          "median_neg_rate": 0.0476,
+          "n": 1350
+        },
+        {
+          "quartile": "low",
+          "mean_neg_rate": 0.0623,
+          "median_neg_rate": 0.0488,
+          "n": 2704
+        },
+        {
+          "quartile": "medium",
+          "mean_neg_rate": 0.0588,
+          "median_neg_rate": 0.0471,
+          "n": 1351
+        }
+      ],
+      "score_by_description_length": [
+        {
+          "quartile": "short",
+          "mean_score": 4.758,
+          "n": 1352
+        },
+        {
+          "quartile": "medium",
+          "mean_score": 4.767,
+          "n": 1353
+        },
+        {
+          "quartile": "long",
+          "mean_score": 4.791,
+          "n": 1363
+        },
+        {
+          "quartile": "very_long",
+          "mean_score": 4.793,
+          "n": 1337
+        }
+      ],
+      "centroid_distance_vs_neg_rate_corr": 0.0197,
+      "n": 5405
+    }
+  },
+  "boston": {
+    "city": "boston",
+    "description_stats": {
+      "mean_length": 386.0,
+      "median_length": 435.0,
+      "mean_word_count": 63.0,
+      "pct_with_luxury_keywords": 11.7,
+      "pct_with_modern_keywords": 32.3,
+      "pct_with_cozy_keywords": 28.7,
+      "pct_with_location_keywords": 63.8,
+      "mean_centroid_distance": 0.7599
+    },
+    "description_vs_price": {
+      "correlations": {
+        "desc_length": 0.0485,
+        "desc_word_count": 0.0226,
+        "luxury_density": 0.1924,
+        "modern_density": 0.0437,
+        "cozy_density": -0.0682,
+        "location_density": -0.1293,
+        "marketing_density": 0.0612
+      },
+      "price_by_description_length": [
+        {
+          "quartile": "short",
+          "median_price": 190.0,
+          "mean_price": 230.96,
+          "n": 862
+        },
+        {
+          "quartile": "medium",
+          "median_price": 240.0,
+          "mean_price": 270.99,
+          "n": 843
+        },
+        {
+          "quartile": "long",
+          "median_price": 195.0,
+          "mean_price": 241.58,
+          "n": 869
+        },
+        {
+          "quartile": "very_long",
+          "median_price": 191.0,
+          "mean_price": 255.93,
+          "n": 833
+        }
+      ],
+      "luxury_premium": {
+        "with_luxury_keywords_median": 284.0,
+        "without_luxury_keywords_median": 192.0,
+        "premium_pct": 47.9
+      },
+      "centroid_distance_vs_price_corr": -0.0749,
+      "n": 3407
+    },
+    "description_vs_reviews": {
+      "score_correlations": {
+        "desc_length": -0.0216,
+        "desc_word_count": -0.0297,
+        "luxury_density": 0.1119,
+        "modern_density": -0.0402,
+        "cozy_density": -0.008,
+        "location_density": 0.0864,
+        "marketing_density": -0.0088
+      },
+      "neg_rate_correlations": {
+        "desc_length": 0.0747,
+        "desc_word_count": 0.0828,
+        "luxury_density": -0.0496,
+        "modern_density": 0.0829,
+        "cozy_density": -0.0624,
+        "location_density": -0.0968,
+        "marketing_density": 0.0099
+      },
+      "neg_rate_by_marketing_density": [
+        {
+          "quartile": "high",
+          "mean_neg_rate": 0.0638,
+          "median_neg_rate": 0.0484,
+          "n": 222
+        },
+        {
+          "quartile": "low",
+          "mean_neg_rate": 0.0602,
+          "median_neg_rate": 0.0459,
+          "n": 477
+        },
+        {
+          "quartile": "medium",
+          "mean_neg_rate": 0.0568,
+          "median_neg_rate": 0.0465,
+          "n": 250
+        }
+      ],
+      "score_by_description_length": [
+        {
+          "quartile": "short",
+          "mean_score": 4.808,
+          "n": 238
+        },
+        {
+          "quartile": "medium",
+          "mean_score": 4.733,
+          "n": 240
+        },
+        {
+          "quartile": "long",
+          "mean_score": 4.788,
+          "n": 246
+        },
+        {
+          "quartile": "very_long",
+          "mean_score": 4.789,
+          "n": 225
+        }
+      ],
+      "centroid_distance_vs_neg_rate_corr": -0.2095,
+      "n": 949
+    }
+  },
+  "chicago": {
+    "city": "chicago",
+    "description_stats": {
+      "mean_length": 398.0,
+      "median_length": 447.0,
+      "mean_word_count": 64.0,
+      "pct_with_luxury_keywords": 13.9,
+      "pct_with_modern_keywords": 35.5,
+      "pct_with_cozy_keywords": 28.9,
+      "pct_with_location_keywords": 62.0,
+      "mean_centroid_distance": 0.7646
+    },
+    "description_vs_price": {
+      "correlations": {
+        "desc_length": 0.0824,
+        "desc_word_count": 0.0467,
+        "luxury_density": 0.2242,
+        "modern_density": 0.0623,
+        "cozy_density": -0.1521,
+        "location_density": -0.0707,
+        "marketing_density": 0.0244
+      },
+      "price_by_description_length": [
+        {
+          "quartile": "short",
+          "median_price": 156.0,
+          "mean_price": 208.36,
+          "n": 1892
+        },
+        {
+          "quartile": "medium",
+          "median_price": 150.0,
+          "mean_price": 205.59,
+          "n": 1859
+        },
+        {
+          "quartile": "long",
+          "median_price": 146.0,
+          "mean_price": 221.16,
+          "n": 1936
+        },
+        {
+          "quartile": "very_long",
+          "median_price": 153.0,
+          "mean_price": 213.01,
+          "n": 1799
+        }
+      ],
+      "luxury_premium": {
+        "with_luxury_keywords_median": 220.0,
+        "without_luxury_keywords_median": 140.0,
+        "premium_pct": 57.1
+      },
+      "centroid_distance_vs_price_corr": -0.0589,
+      "n": 7486
+    },
+    "description_vs_reviews": {
+      "score_correlations": {
+        "desc_length": 0.1129,
+        "desc_word_count": 0.0872,
+        "luxury_density": 0.0439,
+        "modern_density": 0.0376,
+        "cozy_density": -0.0167,
+        "location_density": 0.0044,
+        "marketing_density": 0.0294
+      },
+      "neg_rate_correlations": {
+        "desc_length": -0.0228,
+        "desc_word_count": -0.0107,
+        "luxury_density": 0.0626,
+        "modern_density": 0.0339,
+        "cozy_density": -0.0052,
+        "location_density": -0.0087,
+        "marketing_density": 0.0394
+      },
+      "neg_rate_by_marketing_density": [
+        {
+          "quartile": "high",
+          "mean_neg_rate": 0.0563,
+          "median_neg_rate": 0.0455,
+          "n": 495
+        },
+        {
+          "quartile": "low",
+          "mean_neg_rate": 0.0528,
+          "median_neg_rate": 0.0414,
+          "n": 991
+        },
+        {
+          "quartile": "medium",
+          "mean_neg_rate": 0.0535,
+          "median_neg_rate": 0.041,
+          "n": 495
+        }
+      ],
+      "score_by_description_length": [
+        {
+          "quartile": "short",
+          "mean_score": 4.809,
+          "n": 497
+        },
+        {
+          "quartile": "medium",
+          "mean_score": 4.818,
+          "n": 494
+        },
+        {
+          "quartile": "long",
+          "mean_score": 4.846,
+          "n": 527
+        },
+        {
+          "quartile": "very_long",
+          "mean_score": 4.845,
+          "n": 463
+        }
+      ],
+      "centroid_distance_vs_neg_rate_corr": 0.0579,
+      "n": 1981
+    }
+  }
+}

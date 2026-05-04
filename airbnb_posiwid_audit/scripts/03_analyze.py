@@ -53,6 +53,16 @@ VALUE_PATTERNS = [
 neg_regex = re.compile("|".join(NEGATIVE_PATTERNS), re.IGNORECASE)
 val_regex = re.compile("|".join(VALUE_PATTERNS), re.IGNORECASE)
 
+# V2 stratification constants
+HOST_SCALE_BINS = [0, 1, 4, 9, float("inf")]
+HOST_SCALE_LABELS = ["single", "small_multi_2_4", "medium_multi_5_9", "large_multi_10+"]
+
+STRAT_DIMENSIONS = [
+    ("room_type", "room_type"),
+    ("host_scale", "host_scale"),
+    ("hood_density", "neighbourhood_density"),
+]
+
 
 def load_city(city: str):
     listings = pd.read_csv(DATA_DIR / city / "listings_clean.csv.gz", compression="gzip", low_memory=False)
@@ -61,6 +71,32 @@ def load_city(city: str):
     listings["id"] = pd.to_numeric(listings["id"], errors="coerce").astype("Int64")
     reviews["listing_id"] = pd.to_numeric(reviews["listing_id"], errors="coerce").astype("Int64")
     return listings, reviews
+
+
+def add_stratification_columns(listings: pd.DataFrame) -> pd.DataFrame:
+    """Add V2 stratification columns to listings dataframe."""
+    df = listings.copy()
+
+    # host_scale: single / small_multi / medium_multi / large_multi
+    df["host_scale"] = pd.cut(
+        df["calculated_host_listings_count"],
+        bins=HOST_SCALE_BINS,
+        labels=HOST_SCALE_LABELS,
+        right=True,
+    )
+
+    # neighbourhood_density: high / medium / low tercile by listing count per neighbourhood
+    hood_counts = df.groupby("neighbourhood_cleansed").size().rename("hood_listing_count")
+    df = df.merge(hood_counts, left_on="neighbourhood_cleansed", right_index=True, how="left")
+    terciles = df["hood_listing_count"].quantile([1/3, 2/3])
+    df["neighbourhood_density"] = pd.cut(
+        df["hood_listing_count"],
+        bins=[0, terciles.iloc[0], terciles.iloc[1], float("inf")],
+        labels=["low", "medium", "high"],
+        right=True,
+    )
+
+    return df
 
 
 # === Signal A: Price Variance ===
@@ -279,6 +315,173 @@ def analyze_description_homogenization(listings: pd.DataFrame, city: str) -> dic
     }
 
 
+# === V2 Stratified Signal B: Score Inflation by Host Segment ===
+
+def analyze_score_inflation_stratified(listings: pd.DataFrame) -> dict:
+    results = {}
+    for dim_name, col in STRAT_DIMENSIONS:
+        dim_results = {}
+        for group_val, group_df in listings.groupby(col, observed=True):
+            scores = group_df["review_scores_rating"].dropna()
+            if len(scores) < 10:
+                dim_results[str(group_val)] = {"n": int(len(scores)), "note": "insufficient sample"}
+                continue
+            value_scores = group_df["review_scores_value"].dropna()
+            dim_results[str(group_val)] = {
+                "n": int(len(scores)),
+                "mean": round(scores.mean(), 3),
+                "pct_above_45": round((scores >= 4.5).mean() * 100, 1),
+                "pct_5_0": round((scores == 5.0).mean() * 100, 1),
+                "value_sub_mean": round(value_scores.mean(), 3) if len(value_scores) > 0 else None,
+            }
+        results[dim_name] = dim_results
+    return results
+
+
+# === V2 Stratified Signal C: Hidden Transcript by Host Segment ===
+
+def analyze_hidden_transcript_stratified(reviews: pd.DataFrame, listings: pd.DataFrame) -> dict:
+    reviews = reviews.copy()
+    reviews["is_negative"] = reviews["comments"].str.contains(neg_regex, na=False)
+    reviews["is_value_complaint"] = reviews["comments"].str.contains(val_regex, na=False)
+
+    listing_cols = ["id", "review_scores_rating", "room_type", "host_scale", "neighbourhood_density"]
+    available = [c for c in listing_cols if c in listings.columns]
+    review_merged = reviews.merge(listings[available], left_on="listing_id", right_on="id", how="left")
+
+    high_score_mask = review_merged["review_scores_rating"] >= 4.5
+
+    results = {}
+    for dim_name, col in STRAT_DIMENSIONS:
+        if col not in review_merged.columns:
+            continue
+        dim_results = {}
+        for group_val, group_df in review_merged[high_score_mask].groupby(col, observed=True):
+            n = len(group_df)
+            if n < 50:
+                dim_results[str(group_val)] = {"n": n, "note": "insufficient sample"}
+                continue
+            neg_count = int(group_df["is_negative"].sum())
+            val_count = int(group_df["is_value_complaint"].sum())
+            dim_results[str(group_val)] = {
+                "n": n,
+                "negative_rate_pct": round(neg_count / n * 100, 2),
+                "value_complaint_rate_pct": round(val_count / n * 100, 2),
+                "negative_count": neg_count,
+            }
+        results[dim_name] = dim_results
+    return results
+
+
+# === V2 Stratified Signal D: Description Homogenization by Host Segment ===
+
+def analyze_description_stratified(listings: pd.DataFrame) -> dict:
+    results = {}
+
+    for dim_name, col in [("room_type", "room_type"), ("host_scale", "host_scale")]:
+        dim_results = {}
+        for group_val, group_df in listings.groupby(col, observed=True):
+            descs = group_df["description"].dropna()
+            descs = descs[descs.str.strip().str.len() > 50]
+            if len(descs) < 100:
+                dim_results[str(group_val)] = {"n": int(len(descs)), "note": "insufficient sample"}
+                continue
+            sample_size = min(1000, len(descs))
+            sample = descs.sample(n=sample_size, random_state=42)
+            tfidf = TfidfVectorizer(max_features=5000, stop_words="english", min_df=2)
+            matrix = tfidf.fit_transform(sample)
+            sim = cosine_similarity(matrix)
+            upper = sim[np.triu_indices_from(sim, k=1)]
+            dim_results[str(group_val)] = {
+                "n_sampled": int(sample_size),
+                "mean_similarity": round(float(upper.mean()), 4),
+                "p90_similarity": round(float(np.percentile(upper, 90)), 4),
+            }
+        results[dim_name] = dim_results
+
+    # Same-host vs cross-host comparison
+    multi_hosts = listings.groupby("host_id").filter(lambda x: len(x) >= 3)
+    descs_multi = multi_hosts[multi_hosts["description"].str.strip().str.len() > 50].copy()
+    if len(descs_multi) >= 50:
+        tfidf = TfidfVectorizer(max_features=5000, stop_words="english", min_df=2)
+        all_descs = descs_multi["description"]
+        matrix = tfidf.fit_transform(all_descs)
+        host_ids = descs_multi["host_id"].values
+        indices = np.arange(len(host_ids))
+
+        intra_sims = []
+        inter_sims = []
+        unique_hosts = descs_multi["host_id"].unique()
+        rng = np.random.RandomState(42)
+
+        for h in unique_hosts:
+            h_idx = indices[host_ids == h]
+            if len(h_idx) < 2:
+                continue
+            for i in range(len(h_idx)):
+                for j in range(i + 1, len(h_idx)):
+                    sim_val = cosine_similarity(matrix[h_idx[i]], matrix[h_idx[j]])[0, 0]
+                    intra_sims.append(sim_val)
+
+        n_inter = min(len(intra_sims) * 3, 5000)
+        for _ in range(n_inter):
+            h1, h2 = rng.choice(unique_hosts, size=2, replace=False)
+            idx1 = rng.choice(indices[host_ids == h1])
+            idx2 = rng.choice(indices[host_ids == h2])
+            sim_val = cosine_similarity(matrix[idx1], matrix[idx2])[0, 0]
+            inter_sims.append(sim_val)
+
+        results["same_host_vs_cross_host"] = {
+            "intra_host_mean": round(float(np.mean(intra_sims)), 4) if intra_sims else None,
+            "intra_host_n_pairs": len(intra_sims),
+            "inter_host_mean": round(float(np.mean(inter_sims)), 4) if inter_sims else None,
+            "inter_host_n_pairs": len(inter_sims),
+            "multi_listing_hosts_used": int(len(unique_hosts)),
+        }
+    else:
+        results["same_host_vs_cross_host"] = {"note": "insufficient multi-listing hosts with descriptions"}
+
+    return results
+
+
+# === V2 Enhanced Host Concentration ===
+
+def analyze_host_concentration_enhanced(listings: pd.DataFrame) -> dict:
+    results = {}
+
+    # Professional host ratio: entire_homes / total per host scale group
+    for scale, group_df in listings.groupby("host_scale", observed=True):
+        entire_count = group_df["calculated_host_listings_count_entire_homes"]
+        total_count = group_df["calculated_host_listings_count"]
+        valid = total_count > 0
+        if valid.sum() > 0:
+            ratio = (entire_count[valid] / total_count[valid]).mean()
+            results[f"{scale}_entire_home_ratio"] = round(float(ratio), 3)
+
+    # Price by host scale
+    price_by_scale = {}
+    for scale, group_df in listings.groupby("host_scale", observed=True):
+        prices = group_df["price"].dropna()
+        if len(prices) >= 10:
+            price_by_scale[str(scale)] = {
+                "median_price": round(prices.median(), 2),
+                "n": int(len(prices)),
+            }
+    results["price_by_host_scale"] = price_by_scale
+
+    # Multi-listing host share in high vs low density neighbourhoods
+    density_host = {}
+    for density, group_df in listings.groupby("neighbourhood_density", observed=True):
+        multi_pct = (group_df["calculated_host_listings_count"] >= 2).mean() * 100
+        density_host[str(density)] = {
+            "multi_listing_host_pct": round(multi_pct, 1),
+            "n": int(len(group_df)),
+        }
+    results["multi_host_by_density"] = density_host
+
+    return results
+
+
 # === Host Concentration (supplementary) ===
 
 def analyze_host_concentration(listings: pd.DataFrame, city: str) -> dict:
@@ -323,6 +526,7 @@ def main():
         print(f"{'='*60}")
 
         listings, reviews = load_city(city)
+        listings = add_stratification_columns(listings)
         city_results = {"name": name}
 
         print("  Signal A: Price Variance...")
@@ -339,6 +543,19 @@ def main():
 
         print("  Host Concentration...")
         city_results["host_concentration"] = analyze_host_concentration(listings, city)
+
+        # V2 Stratified Analysis
+        print("  V2 Signal B: Stratified Score Inflation...")
+        city_results["v2_signal_b_stratified"] = analyze_score_inflation_stratified(listings)
+
+        print("  V2 Signal C: Stratified Hidden Transcript...")
+        city_results["v2_signal_c_stratified"] = analyze_hidden_transcript_stratified(reviews, listings)
+
+        print("  V2 Signal D: Stratified Description Homogenization...")
+        city_results["v2_signal_d_stratified"] = analyze_description_stratified(listings)
+
+        print("  V2 Enhanced Host Concentration...")
+        city_results["v2_host_concentration_enhanced"] = analyze_host_concentration_enhanced(listings)
 
         results[city] = city_results
 

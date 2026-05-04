@@ -91,6 +91,84 @@
 
 ---
 
+## V2 — Stratification Variables (Host Segmentation)
+
+V1 treated all hosts as a homogeneous group. V2 introduces host stratification to control for the strongest alternative explanation: that score inflation and Hidden Transcript effects are driven by **host type**, not platform design.
+
+### New Fields for Stratification
+
+All fields below already exist in the retained 30-column listing dataset. No re-download needed.
+
+| Field | Type | Stratification Role | Already in V1 Clean? |
+|-------|------|---------------------|---------------------|
+| `room_type` | str | Operating model proxy (entire home = commercial, private = shared living) | ✓ Used for filtering only |
+| `property_type` | str | Property category (apartment, house, condo, etc.) | ✓ Not used in analysis |
+| `calculated_host_listings_count` | int | Host scale — total listings | ✓ Used for concentration only |
+| `calculated_host_listings_count_entire_homes` | int | Professional host proxy — entire home count | ✓ Not used in analysis |
+| `calculated_host_listings_count_private_rooms` | int | Room rental scale | ✓ Not used in analysis |
+| `calculated_host_listings_count_shared_rooms` | int | Shared room scale | ✓ Not used in analysis |
+| `neighbourhood_cleansed` | str | Competition intensity (via listing density) | ✓ Used for price CV only |
+| `host_id` | int | Same-host cross-listing comparison | ✓ Used for concentration only |
+
+### Field to Verify
+
+| Field | Status | Action |
+|-------|--------|--------|
+| `host_since` | May exist in detailed listings (79-90 cols) but not in V1's 30-column selection | Check raw CSVs; if present, add to retained columns |
+
+### Category Consolidation Rules
+
+#### `room_type` (3 groups)
+
+| Group | Values | Notes |
+|-------|--------|-------|
+| Entire home | `Entire home/apt` | Commercial/investment proxy |
+| Private room | `Private room` | Shared living proxy |
+| Shared room | `Shared room` | If N < 100 per city, merge into Private room or flag as insufficient |
+
+#### `property_type` (5-8 groups from potentially 30+ raw values)
+
+| Group | Typical Values |
+|-------|---------------|
+| Apartment | Entire rental unit, Rental unit, Entire condo |
+| House | Entire home, Entire townhouse, Entire bungalow |
+| Condo | Entire condo, Condominium (if distinct from apartment) |
+| Room in dwelling | Private room in rental unit, Private room in home |
+| Other | Loft, Guest suite, Boat, Tiny home, etc. |
+
+Exact mapping TBD after inspecting raw `property_type` value counts per city.
+
+#### `calculated_host_listings_count` (4 groups)
+
+| Group | Range | Label |
+|-------|-------|-------|
+| Single | 1 | Individual host |
+| Small multi | 2–4 | Side business |
+| Medium multi | 5–9 | Semi-professional |
+| Large multi | 10+ | Professional operator |
+
+#### Neighbourhood Competition Intensity (3 tiers)
+
+Computed per city: count listings per `neighbourhood_cleansed`, then tercile split.
+
+| Tier | Definition | Hypothesis |
+|------|-----------|-----------|
+| High density | Top tercile by listing count | More commercial, more inflation |
+| Medium density | Middle tercile | — |
+| Low density | Bottom tercile | More personal, more natural distribution |
+
+### Data Quality Checks Before V2 Analysis
+
+| Check | Why | Action if Failed |
+|-------|-----|-----------------|
+| Boston `<3.0` and `3.0-3.5` score buckets sample size | V1 gradient test: Boston 3.0-3.5 had only 6 reviews | Merge into single `<3.5` bucket or flag as insufficient |
+| Shared room count per city | If < 100, stratified analysis is unreliable | Merge into private room group or exclude from stratified analysis |
+| `calculated_host_listings_count_entire_homes` null rate | Must be populated for professional host proxy | If >20% null, fall back to `calculated_host_listings_count` only |
+| `property_type` cardinality | May have 30+ unique values | Consolidate to 5-8 groups before analysis |
+| `host_since` existence in raw data | Not confirmed in V1 column selection | If missing, drop from stratification plan |
+
+---
+
 ## Next Step
 
-→ `03_analysis_signals.md` — apply the four POSIWID signals to cleaned data across all three cities.
+→ `03_analysis_signals.md` — apply the four POSIWID signals to cleaned data across all three cities, now with host stratification layers.

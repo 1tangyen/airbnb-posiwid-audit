@@ -39,3 +39,31 @@ python3 scripts/04_generate_dashboard.py  # dashboard → output/dashboard.html
 ## Data Inline
 
 All chart data is embedded directly in the HTML as a JSON object (assigned to `const DATA`). No external file fetches needed — the dashboard works offline after loading Chart.js from CDN.
+
+---
+
+## V2 — Stratified Views (Planned)
+
+> **Status**: Pending V2 analysis results. Dashboard will be regenerated after `03_analyze.py` is updated to output stratified data.
+
+### New Chart Panels
+
+| Panel | Chart Type | Data Source |
+|-------|-----------|-------------|
+| **Score Inflation by Room Type** | Grouped bar (entire/private/shared × 3 cities) | Signal B stratified — % >4.5 per room type |
+| **Score Inflation by Host Scale** | Grouped bar (single/small/medium/large × 3 cities) | Signal B stratified — % >4.5 per host listing count group |
+| **Hidden Transcript by Room Type** | Grouped bar | Signal C stratified — negative rate in 4.5+ listings per room type |
+| **Hidden Transcript by Host Scale** | Grouped bar | Signal C stratified — negative rate per host listing count group |
+| **Same-Host vs Cross-Host Similarity** | Side-by-side bar (intra vs inter × 3 cities) | Signal D stratified — mean TF-IDF similarity |
+| **Description Similarity by Host Scale** | Grouped bar | Signal D stratified — mean similarity per host listing count group |
+
+### Dashboard Layout Update
+
+V1 layout (7 sections) expands to include a new **"V2: Host Stratification"** tab or section after the existing signal sections. Each stratified chart should have a one-line interpretation note below it (auto-generated from analysis JSON).
+
+### Implementation Notes
+
+- `04_generate_dashboard.py` will need to read stratified keys from `analysis_results.json`
+- Stratified data structure: `results.signal_b.stratified.room_type`, `.host_scale`, etc.
+- Chart.js grouped bar config: one dataset per group, one category per city
+- Lavender Lab design system applies — same color palette, card style, badges

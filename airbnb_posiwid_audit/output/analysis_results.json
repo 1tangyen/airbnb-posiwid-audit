@@ -468,6 +468,238 @@
       "multi10_plus_pct": 1.8,
       "top10_hosts_listing_share_pct": 8.4,
       "gini_coefficient": 0.4486
+    },
+    "v2_signal_b_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n": 8287,
+          "mean": 4.734,
+          "pct_above_45": 87.0,
+          "pct_5_0": 29.1,
+          "value_sub_mean": 4.599
+        },
+        "Private room": {
+          "n": 6867,
+          "mean": 4.706,
+          "pct_above_45": 85.5,
+          "pct_5_0": 24.7,
+          "value_sub_mean": 4.617
+        },
+        "Shared room": {
+          "n": 105,
+          "mean": 4.774,
+          "pct_above_45": 91.4,
+          "pct_5_0": 24.8,
+          "value_sub_mean": 4.697
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n": 6000,
+          "mean": 4.808,
+          "pct_above_45": 92.8,
+          "pct_5_0": 25.8,
+          "value_sub_mean": 4.725
+        },
+        "small_multi_2_4": {
+          "n": 4092,
+          "mean": 4.749,
+          "pct_above_45": 88.3,
+          "pct_5_0": 23.9,
+          "value_sub_mean": 4.662
+        },
+        "medium_multi_5_9": {
+          "n": 1684,
+          "mean": 4.675,
+          "pct_above_45": 83.5,
+          "pct_5_0": 27.3,
+          "value_sub_mean": 4.56
+        },
+        "large_multi_10+": {
+          "n": 3483,
+          "mean": 4.562,
+          "pct_above_45": 74.4,
+          "pct_5_0": 32.8,
+          "value_sub_mean": 4.365
+        }
+      },
+      "hood_density": {
+        "low": {
+          "n": 5497,
+          "mean": 4.764,
+          "pct_above_45": 89.1,
+          "pct_5_0": 26.2,
+          "value_sub_mean": 4.672
+        },
+        "medium": {
+          "n": 5115,
+          "mean": 4.704,
+          "pct_above_45": 85.9,
+          "pct_5_0": 27.3,
+          "value_sub_mean": 4.589
+        },
+        "high": {
+          "n": 4647,
+          "mean": 4.689,
+          "pct_above_45": 83.6,
+          "pct_5_0": 27.9,
+          "value_sub_mean": 4.553
+        }
+      }
+    },
+    "v2_signal_c_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n": 247774,
+          "negative_rate_pct": 5.74,
+          "value_complaint_rate_pct": 0.17,
+          "negative_count": 14213
+        },
+        "Private room": {
+          "n": 275925,
+          "negative_rate_pct": 4.53,
+          "value_complaint_rate_pct": 0.13,
+          "negative_count": 12493
+        },
+        "Shared room": {
+          "n": 3982,
+          "negative_rate_pct": 3.79,
+          "value_complaint_rate_pct": 0.13,
+          "negative_count": 151
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n": 293392,
+          "negative_rate_pct": 4.72,
+          "value_complaint_rate_pct": 0.12,
+          "negative_count": 13837
+        },
+        "small_multi_2_4": {
+          "n": 155228,
+          "negative_rate_pct": 5.18,
+          "value_complaint_rate_pct": 0.16,
+          "negative_count": 8040
+        },
+        "medium_multi_5_9": {
+          "n": 45681,
+          "negative_rate_pct": 5.67,
+          "value_complaint_rate_pct": 0.21,
+          "negative_count": 2589
+        },
+        "large_multi_10+": {
+          "n": 33380,
+          "negative_rate_pct": 7.16,
+          "value_complaint_rate_pct": 0.32,
+          "negative_count": 2391
+        }
+      },
+      "hood_density": {
+        "low": {
+          "n": 198060,
+          "negative_rate_pct": 4.84,
+          "value_complaint_rate_pct": 0.14,
+          "negative_count": 9579
+        },
+        "medium": {
+          "n": 169963,
+          "negative_rate_pct": 5.13,
+          "value_complaint_rate_pct": 0.16,
+          "negative_count": 8717
+        },
+        "high": {
+          "n": 159658,
+          "negative_rate_pct": 5.36,
+          "value_complaint_rate_pct": 0.16,
+          "negative_count": 8561
+        }
+      }
+    },
+    "v2_signal_d_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.058,
+          "p90_similarity": 0.1257
+        },
+        "Private room": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0559,
+          "p90_similarity": 0.1214
+        },
+        "Shared room": {
+          "n_sampled": 186,
+          "mean_similarity": 0.1265,
+          "p90_similarity": 0.258
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0575,
+          "p90_similarity": 0.1236
+        },
+        "small_multi_2_4": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0564,
+          "p90_similarity": 0.1246
+        },
+        "medium_multi_5_9": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.056,
+          "p90_similarity": 0.12
+        },
+        "large_multi_10+": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0573,
+          "p90_similarity": 0.1179
+        }
+      },
+      "same_host_vs_cross_host": {
+        "intra_host_mean": 0.3483,
+        "intra_host_n_pairs": 238181,
+        "inter_host_mean": 0.0471,
+        "inter_host_n_pairs": 5000,
+        "multi_listing_hosts_used": 1139
+      }
+    },
+    "v2_host_concentration_enhanced": {
+      "single_entire_home_ratio": 0.584,
+      "small_multi_2_4_entire_home_ratio": 0.454,
+      "medium_multi_5_9_entire_home_ratio": 0.341,
+      "large_multi_10+_entire_home_ratio": 0.637,
+      "price_by_host_scale": {
+        "single": {
+          "median_price": 168.32,
+          "n": 7577
+        },
+        "small_multi_2_4": {
+          "median_price": 140.0,
+          "n": 4987
+        },
+        "medium_multi_5_9": {
+          "median_price": 159.0,
+          "n": 2195
+        },
+        "large_multi_10+": {
+          "median_price": 188.07,
+          "n": 5591
+        }
+      },
+      "multi_host_by_density": {
+        "low": {
+          "multi_listing_host_pct": 53.5,
+          "n": 6956
+        },
+        "medium": {
+          "multi_listing_host_pct": 64.1,
+          "n": 7047
+        },
+        "high": {
+          "multi_listing_host_pct": 71.4,
+          "n": 6347
+        }
+      }
     }
   },
   "boston": {
@@ -923,6 +1155,228 @@
       "multi10_plus_pct": 4.6,
       "top10_hosts_listing_share_pct": 24.7,
       "gini_coefficient": 0.6022
+    },
+    "v2_signal_b_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n": 1976,
+          "mean": 4.747,
+          "pct_above_45": 89.7,
+          "pct_5_0": 21.2,
+          "value_sub_mean": 4.597
+        },
+        "Private room": {
+          "n": 781,
+          "mean": 4.713,
+          "pct_above_45": 84.6,
+          "pct_5_0": 22.8,
+          "value_sub_mean": 4.608
+        },
+        "Shared room": {
+          "n": 3,
+          "note": "insufficient sample"
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n": 607,
+          "mean": 4.875,
+          "pct_above_45": 98.4,
+          "pct_5_0": 23.1,
+          "value_sub_mean": 4.776
+        },
+        "small_multi_2_4": {
+          "n": 594,
+          "mean": 4.787,
+          "pct_above_45": 91.9,
+          "pct_5_0": 19.2,
+          "value_sub_mean": 4.679
+        },
+        "medium_multi_5_9": {
+          "n": 421,
+          "mean": 4.713,
+          "pct_above_45": 85.0,
+          "pct_5_0": 21.9,
+          "value_sub_mean": 4.6
+        },
+        "large_multi_10+": {
+          "n": 1138,
+          "mean": 4.648,
+          "pct_above_45": 82.2,
+          "pct_5_0": 22.1,
+          "value_sub_mean": 4.466
+        }
+      },
+      "hood_density": {
+        "low": {
+          "n": 1060,
+          "mean": 4.746,
+          "pct_above_45": 87.4,
+          "pct_5_0": 22.5,
+          "value_sub_mean": 4.62
+        },
+        "medium": {
+          "n": 894,
+          "mean": 4.765,
+          "pct_above_45": 90.8,
+          "pct_5_0": 22.5,
+          "value_sub_mean": 4.608
+        },
+        "high": {
+          "n": 806,
+          "mean": 4.697,
+          "pct_above_45": 86.6,
+          "pct_5_0": 19.6,
+          "value_sub_mean": 4.566
+        }
+      }
+    },
+    "v2_signal_c_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n": 102045,
+          "negative_rate_pct": 6.59,
+          "value_complaint_rate_pct": 0.27,
+          "negative_count": 6724
+        },
+        "Private room": {
+          "n": 41856,
+          "negative_rate_pct": 3.41,
+          "value_complaint_rate_pct": 0.13,
+          "negative_count": 1426
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n": 46746,
+          "negative_rate_pct": 3.89,
+          "value_complaint_rate_pct": 0.14,
+          "negative_count": 1819
+        },
+        "small_multi_2_4": {
+          "n": 40838,
+          "negative_rate_pct": 3.92,
+          "value_complaint_rate_pct": 0.12,
+          "negative_count": 1602
+        },
+        "medium_multi_5_9": {
+          "n": 18008,
+          "negative_rate_pct": 3.8,
+          "value_complaint_rate_pct": 0.24,
+          "negative_count": 685
+        },
+        "large_multi_10+": {
+          "n": 38309,
+          "negative_rate_pct": 10.56,
+          "value_complaint_rate_pct": 0.45,
+          "negative_count": 4044
+        }
+      },
+      "hood_density": {
+        "low": {
+          "n": 59878,
+          "negative_rate_pct": 4.3,
+          "value_complaint_rate_pct": 0.17,
+          "negative_count": 2574
+        },
+        "medium": {
+          "n": 44173,
+          "negative_rate_pct": 5.04,
+          "value_complaint_rate_pct": 0.25,
+          "negative_count": 2225
+        },
+        "high": {
+          "n": 39850,
+          "negative_rate_pct": 8.41,
+          "value_complaint_rate_pct": 0.31,
+          "negative_count": 3351
+        }
+      }
+    },
+    "v2_signal_d_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0647,
+          "p90_similarity": 0.1255
+        },
+        "Private room": {
+          "n_sampled": 949,
+          "mean_similarity": 0.0643,
+          "p90_similarity": 0.1354
+        },
+        "Shared room": {
+          "n": 3,
+          "note": "insufficient sample"
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n_sampled": 673,
+          "mean_similarity": 0.0643,
+          "p90_similarity": 0.1314
+        },
+        "small_multi_2_4": {
+          "n_sampled": 666,
+          "mean_similarity": 0.062,
+          "p90_similarity": 0.1323
+        },
+        "medium_multi_5_9": {
+          "n_sampled": 480,
+          "mean_similarity": 0.0633,
+          "p90_similarity": 0.1288
+        },
+        "large_multi_10+": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0757,
+          "p90_similarity": 0.1528
+        }
+      },
+      "same_host_vs_cross_host": {
+        "intra_host_mean": 0.4246,
+        "intra_host_n_pairs": 75619,
+        "inter_host_mean": 0.0548,
+        "inter_host_n_pairs": 5000,
+        "multi_listing_hosts_used": 255
+      }
+    },
+    "v2_host_concentration_enhanced": {
+      "single_entire_home_ratio": 0.82,
+      "small_multi_2_4_entire_home_ratio": 0.603,
+      "medium_multi_5_9_entire_home_ratio": 0.568,
+      "large_multi_10+_entire_home_ratio": 0.759,
+      "price_by_host_scale": {
+        "single": {
+          "median_price": 211.0,
+          "n": 687
+        },
+        "small_multi_2_4": {
+          "median_price": 158.0,
+          "n": 682
+        },
+        "medium_multi_5_9": {
+          "median_price": 173.0,
+          "n": 484
+        },
+        "large_multi_10+": {
+          "median_price": 225.0,
+          "n": 1607
+        }
+      },
+      "multi_host_by_density": {
+        "low": {
+          "multi_listing_host_pct": 71.5,
+          "n": 1317
+        },
+        "medium": {
+          "multi_listing_host_pct": 83.7,
+          "n": 1093
+        },
+        "high": {
+          "multi_listing_host_pct": 87.2,
+          "n": 1050
+        }
+      }
     }
   },
   "chicago": {
@@ -1370,6 +1824,237 @@
       "multi10_plus_pct": 2.8,
       "top10_hosts_listing_share_pct": 15.2,
       "gini_coefficient": 0.5151
+    },
+    "v2_signal_b_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n": 5056,
+          "mean": 4.79,
+          "pct_above_45": 92.7,
+          "pct_5_0": 21.1,
+          "value_sub_mean": 4.687
+        },
+        "Private room": {
+          "n": 1206,
+          "mean": 4.687,
+          "pct_above_45": 83.3,
+          "pct_5_0": 22.4,
+          "value_sub_mean": 4.633
+        },
+        "Shared room": {
+          "n": 25,
+          "mean": 4.653,
+          "pct_above_45": 80.0,
+          "pct_5_0": 20.0,
+          "value_sub_mean": 4.653
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n": 2110,
+          "mean": 4.843,
+          "pct_above_45": 95.2,
+          "pct_5_0": 19.8,
+          "value_sub_mean": 4.765
+        },
+        "small_multi_2_4": {
+          "n": 1383,
+          "mean": 4.792,
+          "pct_above_45": 93.0,
+          "pct_5_0": 19.6,
+          "value_sub_mean": 4.71
+        },
+        "medium_multi_5_9": {
+          "n": 934,
+          "mean": 4.692,
+          "pct_above_45": 84.9,
+          "pct_5_0": 19.7,
+          "value_sub_mean": 4.623
+        },
+        "large_multi_10+": {
+          "n": 1860,
+          "mean": 4.707,
+          "pct_above_45": 87.3,
+          "pct_5_0": 25.1,
+          "value_sub_mean": 4.578
+        }
+      },
+      "hood_density": {
+        "low": {
+          "n": 2399,
+          "mean": 4.753,
+          "pct_above_45": 89.1,
+          "pct_5_0": 17.9,
+          "value_sub_mean": 4.678
+        },
+        "medium": {
+          "n": 2399,
+          "mean": 4.78,
+          "pct_above_45": 91.9,
+          "pct_5_0": 21.1,
+          "value_sub_mean": 4.689
+        },
+        "high": {
+          "n": 1489,
+          "mean": 4.779,
+          "pct_above_45": 92.0,
+          "pct_5_0": 27.1,
+          "value_sub_mean": 4.654
+        }
+      }
+    },
+    "v2_signal_c_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n": 242407,
+          "negative_rate_pct": 5.37,
+          "value_complaint_rate_pct": 0.18,
+          "negative_count": 13018
+        },
+        "Private room": {
+          "n": 55999,
+          "negative_rate_pct": 4.81,
+          "value_complaint_rate_pct": 0.13,
+          "negative_count": 2693
+        },
+        "Shared room": {
+          "n": 1331,
+          "negative_rate_pct": 2.25,
+          "value_complaint_rate_pct": 0.08,
+          "negative_count": 30
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n": 135168,
+          "negative_rate_pct": 4.5,
+          "value_complaint_rate_pct": 0.11,
+          "negative_count": 6088
+        },
+        "small_multi_2_4": {
+          "n": 81272,
+          "negative_rate_pct": 4.82,
+          "value_complaint_rate_pct": 0.15,
+          "negative_count": 3914
+        },
+        "medium_multi_5_9": {
+          "n": 44300,
+          "negative_rate_pct": 5.6,
+          "value_complaint_rate_pct": 0.21,
+          "negative_count": 2479
+        },
+        "large_multi_10+": {
+          "n": 38997,
+          "negative_rate_pct": 8.36,
+          "value_complaint_rate_pct": 0.38,
+          "negative_count": 3260
+        }
+      },
+      "hood_density": {
+        "low": {
+          "n": 102786,
+          "negative_rate_pct": 4.76,
+          "value_complaint_rate_pct": 0.15,
+          "negative_count": 4890
+        },
+        "medium": {
+          "n": 124662,
+          "negative_rate_pct": 5.54,
+          "value_complaint_rate_pct": 0.19,
+          "negative_count": 6903
+        },
+        "high": {
+          "n": 72289,
+          "negative_rate_pct": 5.46,
+          "value_complaint_rate_pct": 0.17,
+          "negative_count": 3948
+        }
+      }
+    },
+    "v2_signal_d_stratified": {
+      "room_type": {
+        "Entire home/apt": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0643,
+          "p90_similarity": 0.1288
+        },
+        "Private room": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0585,
+          "p90_similarity": 0.1228
+        },
+        "Shared room": {
+          "n": 32,
+          "note": "insufficient sample"
+        }
+      },
+      "host_scale": {
+        "single": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.06,
+          "p90_similarity": 0.1241
+        },
+        "small_multi_2_4": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0587,
+          "p90_similarity": 0.1236
+        },
+        "medium_multi_5_9": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0584,
+          "p90_similarity": 0.1224
+        },
+        "large_multi_10+": {
+          "n_sampled": 1000,
+          "mean_similarity": 0.0806,
+          "p90_similarity": 0.1582
+        }
+      },
+      "same_host_vs_cross_host": {
+        "intra_host_mean": 0.4591,
+        "intra_host_n_pairs": 204423,
+        "inter_host_mean": 0.054,
+        "inter_host_n_pairs": 5000,
+        "multi_listing_hosts_used": 510
+      }
+    },
+    "v2_host_concentration_enhanced": {
+      "single_entire_home_ratio": 0.897,
+      "small_multi_2_4_entire_home_ratio": 0.721,
+      "medium_multi_5_9_entire_home_ratio": 0.582,
+      "large_multi_10+_entire_home_ratio": 0.849,
+      "price_by_host_scale": {
+        "single": {
+          "median_price": 145.0,
+          "n": 2382
+        },
+        "small_multi_2_4": {
+          "median_price": 129.0,
+          "n": 1555
+        },
+        "medium_multi_5_9": {
+          "median_price": 110.0,
+          "n": 1072
+        },
+        "large_multi_10+": {
+          "median_price": 194.0,
+          "n": 2717
+        }
+      },
+      "multi_host_by_density": {
+        "low": {
+          "multi_listing_host_pct": 59.9,
+          "n": 2734
+        },
+        "medium": {
+          "multi_listing_host_pct": 70.5,
+          "n": 2863
+        },
+        "high": {
+          "multi_listing_host_pct": 79.3,
+          "n": 2129
+        }
+      }
     }
   },
   "cross_city_summary": {
