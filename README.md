@@ -63,6 +63,23 @@ Left: Negative text rate drops sharply from low-scoring to high-scoring listings
 
 Boston stands out: only 65% single-listing hosts, and the top 10 hosts control **24.7%** of all listings — nearly 3x NYC's 8.4%. The "sharing economy" narrative collapses hardest where concentration is highest.
 
+## V2 — Host Stratification: The Dual-Layer Effect
+
+![V2 Host Stratification](airbnb_posiwid_audit/assets/v2_4charts.png)
+
+V1 treated all hosts as a homogeneous group. V2 stratifies by host scale (1 listing / 2–4 / 5–9 / 10+) and room type. The result is a **counterfactual finding**:
+
+| Host Scale | Score >4.5 (NYC) | Negative Text Rate (NYC) |
+|------------|-----------------|--------------------------|
+| Single (1 listing) | **92.8%** | 4.72% |
+| Small multi (2–4) | 88.3% | 5.18% |
+| Medium multi (5–9) | 83.5% | 5.67% |
+| Large multi (10+) | 74.4% | **7.16%** |
+
+**Individual hosts have the highest score inflation but the cleanest text. Large professional operators have lower scores but generate the most negative reviews — nearly 2× the rate of individual hosts.**
+
+This is the platform subsidy in reverse: individual hosts compete by maximizing their single listing's rating (survival pressure). Professional operators don't need 5 stars — they need *good enough* across a portfolio. The rating system doesn't uniformly inflate; it creates a **scale subsidy** that insulates volume operators from quality accountability.
+
 ## Project Structure
 
 ```
@@ -72,15 +89,22 @@ Boston stands out: only 65% single-listing hosts, and the top 10 hosts control *
 03_analysis_signals.md      — Methods, parameters, theoretical grounding per signal
 04_results.md               — Cross-city comparison results
 05_dashboard.md             — Final HTML dashboard build notes
+08_outlier_detection.md     — Outlier detection methodology (price + review anomalies)
 scripts/
   01_download.sh            — Automated data download
   02_clean.py               — Data cleaning pipeline
-  03_analyze.py             — Signal analysis
+  03_analyze.py             — Signal analysis (V1 + V2 stratified)
   04_generate_dashboard.py  — Dashboard HTML generation
+  05_outlier_reviews.py     — Review outlier detection
+  06_outlier_price.py       — Price outlier detection
+  07_description_impact.py  — Description impact analysis
 data/                       — Raw data (gitignored, ~226MB)
 output/
-  dashboard.html            — Interactive results dashboard
-  analysis_results.json     — Full analysis output (JSON)
+  dashboard.html            — Interactive results dashboard (V2)
+  analysis_results.json     — Full analysis output with V2 stratification
+  outlier_reviews.json      — Review outlier results
+  outlier_price.json        — Price outlier results
+  description_impact.json   — Description impact results
 assets/                     — Screenshots for README
 ```
 
