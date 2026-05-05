@@ -489,6 +489,46 @@ footer a {{ color: var(--purple); text-decoration: none; }}
   </div>
 </div>
 
+<!-- V2: Host Stratification -->
+<h2>V2 — Host Stratification: Who Captures the Platform Subsidy?</h2>
+<div class="signal-card">
+  <div class="signal-header">
+    <span class="signal-id signal-strong">COUNTERFACTUAL FINDING</span>
+    <span>Score Inflation and Negative Text Diverge by Host Scale</span>
+  </div>
+  <p><strong>V1 finding</strong>: 86–91% of listings score &gt;4.5. But is this uniform across host types?<br>
+  <strong>V2 finding</strong>: Individual hosts (1 listing) have the <em>highest</em> score inflation (92–98% above 4.5) but the <em>lowest</em> negative text rate. Large professional hosts (10+ listings) have lower score inflation, but their reviews contain the most negative language — up to 2&times; the rate of individual hosts.</p>
+
+  <div class="posiwid-box">
+    <p><strong>The dual-layer effect:</strong> Individual hosts compete by maximizing their single listing's rating — they need the 5-star signal to survive. Large operators don't. They need to be <em>good enough</em> across a portfolio. The rating system doesn't just inflate scores — it creates a <span class="actual">scale subsidy</span>: professional hosts operate at lower rating standards while volume absorbs the noise.</p>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <h4>Score Inflation (% &gt;4.5) by Host Scale — All Cities</h4>
+    <canvas id="chart-v2-score-hostscale"></canvas>
+    <p style="font-size:0.8rem;color:var(--text-3);margin-top:0.5rem;">Individual hosts show the highest inflation; large multi-listing hosts show the lowest.</p>
+  </div>
+  <div class="chart-box">
+    <h4>Negative Text Rate (%) by Host Scale — All Cities</h4>
+    <canvas id="chart-v2-neg-hostscale"></canvas>
+    <p style="font-size:0.8rem;color:var(--text-3);margin-top:0.5rem;">Large hosts generate the most negative text despite lower score inflation.</p>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <h4>Score Inflation (% &gt;4.5) by Room Type — All Cities</h4>
+    <canvas id="chart-v2-score-roomtype"></canvas>
+  </div>
+  <div class="chart-box">
+    <h4>Negative Text Rate (%) by Room Type — All Cities</h4>
+    <canvas id="chart-v2-neg-roomtype"></canvas>
+    <p style="font-size:0.8rem;color:var(--text-3);margin-top:0.5rem;">Entire home listings generate more negative text than private rooms despite similar score levels.</p>
+  </div>
+</div>
+
 <!-- Hidden Transcript Story -->
 <h2>The Hidden Transcript — An Illustration</h2>
 <div class="story-card">
@@ -517,7 +557,7 @@ footer a {{ color: var(--purple); text-decoration: none; }}
   <strong>Analysis</strong>: VoxelNoir Research &middot; <a href="https://voxelnoir.substack.com">voxelnoir.substack.com</a><br>
   <strong>Framework</strong>: POSIWID (Stafford Beer, 1974) &middot; Hidden Transcript (James C. Scott, 1990)<br>
   <strong>Pipeline</strong>: <code>01_download.sh → 02_clean.py → 03_analyze.py → 04_generate_dashboard.py</code><br>
-  Generated: 2026-05-01
+  Generated: 2026-05-04 (V2: host stratification added)
 </footer>
 
 </div><!-- /container -->
@@ -765,6 +805,114 @@ const COLORS = {{
       responsive: true,
       plugins: {{ legend: {{ display: false }} }},
       scales: {{ y: {{ beginAtZero: true, max: 1.0, title: {{ display: true, text: 'Gini (0 = equal, 1 = concentrated)' }} }} }}
+    }}
+  }});
+}})();
+
+// === V2: Score Inflation by Host Scale ===
+(() => {{
+  const scaleLabels = ['Single (1)', 'Small (2-4)', 'Medium (5-9)', 'Large (10+)'];
+  const scaleKeys = ['single', 'small_multi_2_4', 'medium_multi_5_9', 'large_multi_10+'];
+  const cities = ['nyc', 'boston', 'chicago'];
+  const datasets = cities.map((city, i) => ({{
+    label: city.toUpperCase(),
+    data: scaleKeys.map(k => {{
+      const d = DATA[city].v2_signal_b_stratified.host_scale[k];
+      return d ? d.pct_above_45 : null;
+    }}),
+    backgroundColor: Object.values(COLORS)[i] + '99',
+    borderColor: Object.values(COLORS)[i],
+    borderWidth: 1,
+  }}));
+  new Chart(document.getElementById('chart-v2-score-hostscale'), {{
+    type: 'bar',
+    data: {{ labels: scaleLabels, datasets }},
+    options: {{
+      responsive: true,
+      scales: {{
+        y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: '% listings above 4.5' }} }}
+      }}
+    }}
+  }});
+}})();
+
+// === V2: Negative Text Rate by Host Scale ===
+(() => {{
+  const scaleLabels = ['Single (1)', 'Small (2-4)', 'Medium (5-9)', 'Large (10+)'];
+  const scaleKeys = ['single', 'small_multi_2_4', 'medium_multi_5_9', 'large_multi_10+'];
+  const cities = ['nyc', 'boston', 'chicago'];
+  const datasets = cities.map((city, i) => ({{
+    label: city.toUpperCase(),
+    data: scaleKeys.map(k => {{
+      const d = DATA[city].v2_signal_c_stratified.host_scale[k];
+      return d ? d.negative_rate_pct : null;
+    }}),
+    backgroundColor: Object.values(COLORS)[i] + '99',
+    borderColor: Object.values(COLORS)[i],
+    borderWidth: 1,
+  }}));
+  new Chart(document.getElementById('chart-v2-neg-hostscale'), {{
+    type: 'bar',
+    data: {{ labels: scaleLabels, datasets }},
+    options: {{
+      responsive: true,
+      scales: {{
+        y: {{ beginAtZero: true, title: {{ display: true, text: 'Negative text rate (%)' }} }}
+      }}
+    }}
+  }});
+}})();
+
+// === V2: Score Inflation by Room Type ===
+(() => {{
+  const rtLabels = ['Entire home', 'Private room', 'Shared room'];
+  const rtKeys = ['Entire home/apt', 'Private room', 'Shared room'];
+  const cities = ['nyc', 'boston', 'chicago'];
+  const datasets = cities.map((city, i) => ({{
+    label: city.toUpperCase(),
+    data: rtKeys.map(k => {{
+      const d = DATA[city].v2_signal_b_stratified.room_type[k];
+      return d ? d.pct_above_45 : null;
+    }}),
+    backgroundColor: Object.values(COLORS)[i] + '99',
+    borderColor: Object.values(COLORS)[i],
+    borderWidth: 1,
+  }}));
+  new Chart(document.getElementById('chart-v2-score-roomtype'), {{
+    type: 'bar',
+    data: {{ labels: rtLabels, datasets }},
+    options: {{
+      responsive: true,
+      scales: {{
+        y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: '% listings above 4.5' }} }}
+      }}
+    }}
+  }});
+}})();
+
+// === V2: Negative Text Rate by Room Type ===
+(() => {{
+  const rtLabels = ['Entire home', 'Private room', 'Shared room'];
+  const rtKeys = ['Entire home/apt', 'Private room', 'Shared room'];
+  const cities = ['nyc', 'boston', 'chicago'];
+  const datasets = cities.map((city, i) => ({{
+    label: city.toUpperCase(),
+    data: rtKeys.map(k => {{
+      const d = DATA[city].v2_signal_c_stratified.room_type[k];
+      return d ? d.negative_rate_pct : null;
+    }}),
+    backgroundColor: Object.values(COLORS)[i] + '99',
+    borderColor: Object.values(COLORS)[i],
+    borderWidth: 1,
+  }}));
+  new Chart(document.getElementById('chart-v2-neg-roomtype'), {{
+    type: 'bar',
+    data: {{ labels: rtLabels, datasets }},
+    options: {{
+      responsive: true,
+      scales: {{
+        y: {{ beginAtZero: true, title: {{ display: true, text: 'Negative text rate (%)' }} }}
+      }}
     }}
   }});
 }})();
